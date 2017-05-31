@@ -1,46 +1,43 @@
 import { Injectable } from '@angular/core';
-import { CanActivate ,Router} from '@angular/router';
-import {ActivatedRouteSnapshot} from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
+import { Http, RequestOptions, Headers, Response } from '@angular/http';
+import { Configuration } from './config';
+import { Observable } from 'rxjs/Observable';
+import { ConnectService } from './connect.service';
 
 
 @Injectable()
 export class AuthService implements CanActivate {
-  usertype;
-  constructor(public router1:Router) { }
-  verifier(info){
-    console.log(info.status)
-    if(info.status==false)
-    {
-      alert("Something Went Wrong! Try Again.")
-    }
-    else{
-      this.usertype=info.respData.data;
-      localStorage.setItem("usertype",this.usertype)
-      if(this.usertype=="2")
-      { 
-        this.router1.navigate(['/admin'])
-      }
-      else{
-        if(this.usertype=="1")
-        this.router1.navigate(['/super-admin'])
-      }
 
-      
-    }
-  }
-  
-  canActivate(route: ActivatedRouteSnapshot) {
+canActivate(route: ActivatedRouteSnapshot) {
     var x= route.data;
-    console.log(x)
-    if(x[0].usertype==localStorage.getItem("usertype"))
+    console.log(localStorage.getItem("usertype"));
+    if(x[0].role==localStorage.getItem("usertype"))
     {
       return true;
     }
     else
     {
       return false;
-    } 
-    
+    }
   }
+  details: {
+    username: string,
+    password: string
+  }
+   a;
+  public data;
+  public check;
+  static value;
+  constructor(public router1: Router, public auth: ConnectService,public httpService: Http, public UrlObject: Configuration) { }
+
+    Postlogin(details): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.httpService.post(this.UrlObject.UrlObj.VerifyUserUrl, details, headers).map(
+     (res: Response) => res.json());
+    }
+
 }

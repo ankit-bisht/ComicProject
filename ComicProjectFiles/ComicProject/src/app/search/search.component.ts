@@ -18,7 +18,7 @@ searchitem1;
   }
 SearchComic(){
   this.search.GetSearchComic(this.searchitem1).subscribe(res => {
-      this.GetSearchComic = res.respData;
+      this.GetSearchComic = res.respData.data[0];
       if(this.GetSearchComic){
       console.log(this.GetSearchComic);
       }
@@ -30,7 +30,7 @@ SearchComic(){
 
 SearchSeries(){
   this.search.GetSearchSeries(this.searchitem1).subscribe(res => {
-      this.GetSearchSeries = res.respData;
+      this.GetSearchSeries = res.respData.data[0];
       if(this.GetSearchSeries){
       console.log(this.GetSearchSeries);
       }
@@ -42,7 +42,7 @@ SearchSeries(){
 
 SearchSeason(){
   this.search.GetSearchSeason(this.searchitem1).subscribe(res => {
-      this.GetSearchSeason = res.respData;
+      this.GetSearchSeason = res.respData.data[0];
       if(this.GetSearchSeason){
       console.log(this.GetSearchSeason);
       }

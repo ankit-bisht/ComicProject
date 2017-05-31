@@ -1,0 +1,21 @@
+<h1> Welcome Super Admin! </h1>
+<button class="btn btn-info" (click)="GetUser()">
+      <span class="glyphicon glyphicon-search"></span>GetUser
+</button>
+<div *ngIf="user">
+<table style="width:100%">
+  <tr>
+    <th>User Name</th>
+    <th>Password</th>
+    <th>Name</th>
+    <th>User Type</th>
+  </tr>
+  <br>
+  <tr *ngFor="let item of user; let i = index">
+    <td>{{item.username}}</td>
+    <td>{{item.password}}</td>
+    <td>{{item.name}}</td>
+    <td>{{item.usertype}}</td>
+  </tr>
+</table>
+</div>

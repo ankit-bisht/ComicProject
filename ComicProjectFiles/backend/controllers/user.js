@@ -69,36 +69,66 @@ exports.searchUser = function (req, res) {
     }
     })};
 //user Verify
-exports.verifyuser = function (req, res) {
-    console.log(req.params.reg);
-    var username1 = req.body.username;
-    var password1 = req.body.password;
-    User.findOne({username:username1,password:password1}, function (err, response) {
-        if (err) {
-            res.json({
-                            "status": false,
-                            "respData": {
-                        "data": err
-                                }
-                            });
-        }
-        if ((response || []).length === 0){
-            return res.json({
-                    "status": false,
-                    "respData": {
-                    "data": "User Doesn't exist"
-                        }
-                    });
-        }
-        return res.json({
-            "status": true,
-            "respData": {
-             "data":response.role
-            }
-        });
-    })
-};
+// exports.verifyuser = function (req, res) {
+//     console.log(req.params.reg);
+//     var username1 = req.body.username;
+//     var password1 = req.body.password;
+//     User.findOne({username:username1,password:password1}, function (err, response) {
+//         if (err) {
+//             res.json({
+//                             "status": false,
+//                             "respData": {
+//                         "data": err
+//                                 }
+//                             });
+//         }
+//         if ((response || []).length === 0){
+//             return res.json({
+//                     "status": false,
+//                     "respData": {
+//                     "data": "User Doesn't exist"
+//                         }
+//                     });
+//         }
+//         return res.json({
+//             "status": true,
+//             "respData": {
+//              "data":response.role
+//             }
+//         });
+//     })
+// };
 
+exports.verifyUser = function (req, res) {
+
+    username1 = req.body.username;
+    password1 = req.body.password;
+    console.log(username1);
+    User.findOne({
+        username: username1,
+        password: password1
+    }, function (err,user) {
+        if (err) {
+            res.json(err);
+        }
+        if (user) {
+            res.json({
+                "status": true,
+                "respData": {
+                    "data": user
+                }
+            });
+        }
+        else {
+            res.json({
+                "status": false,
+                "respData": {
+                    "data": "user does not exist"
+                }
+            });
+        }
+    });
+}
 //Users delete
 exports.deleteUser=function(req,res){
     var username = req.params.username;

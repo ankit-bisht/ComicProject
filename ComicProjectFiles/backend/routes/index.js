@@ -14,7 +14,7 @@ router.route('/v1/user/delete/:_id')
   .delete(userController.deleteUser);
 
 router.route('/v1/user/verify')
- .post(userController.verifyuser)
+ .post(userController.verifyUser)
 //series apis
 router.route('/v1/series')
   .post(userController.postSeries)

@@ -37,7 +37,7 @@ GetSearchUser(SearchParam): Observable<any> {
     );
 }
 GetSearchComic(SearchParam): Observable<any> {
-    // console.log(SearchParam);
+    console.log(SearchParam);
     return this.httpService.get(this.UrlObject.UrlObj.ComicSearchUrl + '/' + SearchParam).map(
       data => data.json()
     );
@@ -95,11 +95,11 @@ PostSeries(): Observable<any> {
       data => data.json()
     );
 }
-verify(){
-  let headers = new Headers({'Content-Type': 'application/json'});
-    let options = new RequestOptions({ headers: headers });
-    return this.httpService.post(this.UrlObject.UrlObj.VerifyUserUrl,headers).map(
-      (res: Response) => res.json());
-}
+// verify(){
+//   let headers = new Headers({'Content-Type': 'application/json'});
+//     let options = new RequestOptions({ headers: headers });
+//     return this.httpService.post(this.UrlObject.UrlObj.VerifyUserUrl,headers).map(
+//       (res: Response) => res.json());
+// }
 
 }
