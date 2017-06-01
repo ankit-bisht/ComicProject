@@ -3,9 +3,9 @@ var mongoose = require('mongoose');
 
 // Define our Comics Schema
 var ComicsSchema = new mongoose.Schema({
-    name: {type: String},
-    image: {type: String},
-    story: {type: String},
+    name: {type: String, required: true},
+    image: {type: String, required: true},
+    story: {type: String, required: true},
     createddate: {type: Date, default: Date.now},
     updateddate: {Date}
 });

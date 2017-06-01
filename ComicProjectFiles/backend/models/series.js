@@ -3,11 +3,12 @@ var mongoose = require('mongoose');
 
 // Define our Series schema
 var SeriesSchema = new mongoose.Schema({
-    name: {type: String},
-    description: {type: String},
+    name: {type: String, required: true},
+    description: {type: String, required: true},
+    createdby: {type: String, required: true},
     createddate: {type: Date, default: Date.now},
-    updatedate: {Date},
-    createdby: {type: String}
+    updatedate: {Date}
+
 });
 
 // Export the Mongoose model

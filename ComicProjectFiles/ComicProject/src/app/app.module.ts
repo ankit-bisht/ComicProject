@@ -14,6 +14,7 @@ import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
 import { AuthService } from './auth.service';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { RegisterComponent } from './register/register.component';
 
 const rou1:Routes=[
      {path : 'login', component : LoginComponent},
@@ -21,7 +22,8 @@ const rou1:Routes=[
      {path : 'super-admin', component : SuperAdminComponent},
      {path : 'user', component : UserComponent},
      {path : 'admin', component : AdminComponent},
-     {path : 'search-result', component : SearchResultComponent}
+     {path : 'search-result', component : SearchResultComponent},
+     {path : 'register', component : RegisterComponent}
 ];
 
 @NgModule({
@@ -33,7 +35,8 @@ const rou1:Routes=[
     SuperAdminComponent,
     AdminComponent,
     UserComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 <h1> Welcome Super Admin! </h1>
 <button class="btn btn-info" (click)="GetUser()">
-      <span class="glyphicon glyphicon-search"></span>GetUser
+Get Users
 </button>
 <div *ngIf="user">
 <table style="width:100%">
@@ -16,6 +16,21 @@
     <td>{{item.password}}</td>
     <td>{{item.name}}</td>
     <td>{{item.usertype}}</td>
+    <button (click)="save(item.username)" type="submit" class="btn btn-info">Edit</button>
+    <button class="btn btn-info" (click)="DeleteUser(item.username)">delete</button>
   </tr>
 </table>
+
+<div *ngIf="flag">
+  <form #form1="ngForm" (ngSubmit)="updateuser(dropdown.value)">
+    <div class="form-group">
+      <input required type="text" name="password" [(ngModel)]="Newuser.password" #name="ngModel" placeholder="Change password" class="form-control">
+    </div>
+         <select #dropdown>
+  <option  name="usertype" value="2"  ngDefaultControl>Admin</option>
+  <option   name="usertype" value="3"  ngDefaultControl>User</option>
+</select>
+
+    <button type="submit" class="btn btn-success">Proceed</button>
+  </form>
 </div>

@@ -21,7 +21,7 @@ routes = require('./routes/index')
 app.use('/api', routes);
 
 // Defining Port
-var port = process.env.PORT || 3002;
+var port = process.env.PORT || 3003;
 
 // To Start node server
 app.listen(port);

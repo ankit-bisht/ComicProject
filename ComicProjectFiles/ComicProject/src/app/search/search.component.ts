@@ -20,7 +20,6 @@ SearchComic(){
   this.search.GetSearchComic(this.searchitem1).subscribe(res => {
       this.GetSearchComic = res.respData.data[0];
       if(this.GetSearchComic){
-      console.log(this.GetSearchComic);
       }
       else{
         alert('Cannot find! Try something else.');
@@ -32,7 +31,6 @@ SearchSeries(){
   this.search.GetSearchSeries(this.searchitem1).subscribe(res => {
       this.GetSearchSeries = res.respData.data[0];
       if(this.GetSearchSeries){
-      console.log(this.GetSearchSeries);
       }
       else{
         alert('Cannot find! Try something else.');
@@ -44,7 +42,6 @@ SearchSeason(){
   this.search.GetSearchSeason(this.searchitem1).subscribe(res => {
       this.GetSearchSeason = res.respData.data[0];
       if(this.GetSearchSeason){
-      console.log(this.GetSearchSeason);
       }
       else{
         alert('Cannot find! Try something else.');

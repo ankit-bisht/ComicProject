@@ -31,47 +31,43 @@ GetSeries(): Observable<any> {
     );
 }
 GetSearchUser(SearchParam): Observable<any> {
-    console.log(SearchParam);
     return this.httpService.get(this.UrlObject.UrlObj.UserSearchUrl + '/' + SearchParam).map(
       data => data.json()
     );
 }
 GetSearchComic(SearchParam): Observable<any> {
-    console.log(SearchParam);
     return this.httpService.get(this.UrlObject.UrlObj.ComicSearchUrl + '/' + SearchParam).map(
       data => data.json()
     );
 }
 GetSearchSeries(SearchParam): Observable<any> {
-    console.log(SearchParam);
     return this.httpService.get(this.UrlObject.UrlObj.SeriesSearchUrl + '/' + SearchParam).map(
       data => data.json()
     );
 }
 GetSearchSeason(SearchParam): Observable<any> {
-    console.log(SearchParam);
     return this.httpService.get(this.UrlObject.UrlObj.SeasonSearchUrl + '/' + SearchParam).map(
       data => data.json()
     );
 }
-DeleteSeries(id): Observable<any> {
-    return this.httpService.get(this.UrlObject.UrlObj.SeriesDeleteUrl + '/' + id).map(
+DeleteSeries(name): Observable<any> {
+    return this.httpService.get(this.UrlObject.UrlObj.SeriesDeleteUrl + '/' + name).map(
       data => data.json()
     );
 }
-DeleteSeason(id): Observable<any> {
-    return this.httpService.get(this.UrlObject.UrlObj.SeasonDeleteUrl + '/' + id).map(
+DeleteSeason(name): Observable<any> {
+    return this.httpService.get(this.UrlObject.UrlObj.SeasonDeleteUrl + '/' + name).map(
       data => data.json()
     );
 }
-DeleteUser(id): Observable<any> {
-    return this.httpService.get(this.UrlObject.UrlObj.UserDeleteUrl + '/' + id).map(
+DeleteUser(username): Observable<any> {
+    return this.httpService.delete(this.UrlObject.UrlObj.UserDeleteUrl + '/' + username).map(
       data => data.json()
     );
 }
-DeleteComic(id): Observable<any> {
+DeleteComic(name): Observable<any> {
 
-    return this.httpService.get(this.UrlObject.UrlObj.ComicDeletUrl + '/' + id).map(
+    return this.httpService.get(this.UrlObject.UrlObj.ComicDeleteUrl + '/' + name).map(
       data => data.json()
     );
 }
@@ -95,11 +91,34 @@ PostSeries(): Observable<any> {
       data => data.json()
     );
 }
-// verify(){
-//   let headers = new Headers({'Content-Type': 'application/json'});
-//     let options = new RequestOptions({ headers: headers });
-//     return this.httpService.post(this.UrlObject.UrlObj.VerifyUserUrl,headers).map(
-//       (res: Response) => res.json());
-// }
+UpdateUser(a): Observable<any> {
+   console.log(a, "in service")
+
+   return this.httpService.put(this.UrlObject.UrlObj.UserUpdateUrl, a).map(
+     data => data.json()
+
+   )
+ }
+UpdateSeries(Data){
+  let headers = new Headers({ 'Content-Type': 'application/json' });
+  let options = new RequestOptions({ headers: headers });
+  console.log(Data);
+ return this.httpService.put(this.UrlObject.UrlObj.SeriesUpdateUrl, Data, headers).map(
+   (res: Response) => res.json());
+}
+UpdateSeason(Data){
+  let headers = new Headers({ 'Content-Type': 'application/json' });
+  let options = new RequestOptions({ headers: headers });
+  console.log(Data);
+ return this.httpService.put(this.UrlObject.UrlObj.SeasonUpdateUrl, Data, headers).map(
+   (res: Response) => res.json());
+}
+UpdateComic(Data){
+  let headers = new Headers({ 'Content-Type': 'application/json' });
+  let options = new RequestOptions({ headers: headers });
+  console.log(Data);
+ return this.httpService.put(this.UrlObject.UrlObj.ComicUpdateUrl, Data, headers).map(
+   (res: Response) => res.json());
+}
 
 }
