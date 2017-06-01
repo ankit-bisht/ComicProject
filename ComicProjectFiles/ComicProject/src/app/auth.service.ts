@@ -10,28 +10,42 @@ import { ConnectService } from './connect.service';
 
 @Injectable()
 export class AuthService implements CanActivate {
-
+usertype;
+  constructor(public router1: Router, public auth: ConnectService,public httpService: Http, public UrlObject: Configuration) { }
+// canActivate(route: ActivatedRouteSnapshot) {
+//     var x= route.data;
+//     console.log(x);
+//     if(x[0].usertype==localStorage.getItem("usertype"))
+//     {
+//       return true;
+//     }
+//     else
+//     {
+//       return false;
+//     }
+//   }
 canActivate(route: ActivatedRouteSnapshot) {
-    var x= route.data;
-    console.log(localStorage.getItem("usertype"));
-    if(x[0].role==localStorage.getItem("usertype"))
-    {
-      return true;
-    }
-    else
-    {
-      return false;
-    }
-  }
+   // console.log();
+   var x = route.data;
+   console.log(localStorage.getItem("usertype"))
+   console.log(x)
+   if (x[0].role == localStorage.getItem("usertype")) {
+     return true;
+   }
+   else {
+this.router1.navigate(['/login'])
+     return false;
+
+   }
+ }
   details: {
     username: string,
     password: string
   }
-   a;
   public data;
   public check;
   static value;
-  constructor(public router1: Router, public auth: ConnectService,public httpService: Http, public UrlObject: Configuration) { }
+
 
     Postlogin(details): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
