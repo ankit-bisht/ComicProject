@@ -16,21 +16,21 @@ Get Users
     <td>{{item.password}}</td>
     <td>{{item.name}}</td>
     <td>{{item.usertype}}</td>
-    <button (click)="save(item.username)" type="submit" class="btn btn-info">Edit</button>
+    <button (click)="save(item._id)" type="submit" class="btn btn-info">Edit</button>
     <button class="btn btn-info" (click)="DeleteUser(item.username)">delete</button>
   </tr>
 </table>
 
 <div *ngIf="flag">
-  <form #form1="ngForm" (ngSubmit)="updateuser(dropdown.value)">
+  <form  (ngSubmit)="updateuser(dropdown.value)">
     <div class="form-group">
-      <input required type="text" name="password" [(ngModel)]="Newuser.password" #name="ngModel" placeholder="Change password" class="form-control">
+      <input required type="text" name="name" [(ngModel)]="Newuser.name" #name="ngModel"  placeholder="New name" class="form-control">
+      <input required type="password" name="password" [(ngModel)]="Newuser.password" #password="ngModel"  placeholder="New password" class="form-control">
     </div>
          <select #dropdown>
-  <option  name="usertype" value="2"  ngDefaultControl>Admin</option>
-  <option   name="usertype" value="3"  ngDefaultControl>User</option>
+  <option  value="2" name="usertype" ngDefaultControl>Admin</option>
+  <option  value="3" name="usertype" ngDefaultControl>User</option>
 </select>
-
-    <button type="submit" class="btn btn-success">Proceed</button>
+    <button type="submit" [routerLink]="['/super-admin']" class="btn btn-success">Update</button>
   </form>
 </div>

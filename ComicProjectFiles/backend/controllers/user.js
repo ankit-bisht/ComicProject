@@ -15,6 +15,7 @@ exports.postUser = function (req, res) {
           usertype: req.body.usertype
       });
 
+
       user.save(function (err, response) {
           if(err) {
               res.json(err);
@@ -27,7 +28,6 @@ exports.postUser = function (req, res) {
           }
       });
     }else{
-      console.log(req.body.usertype)
       res.json({
           success: false,
           body: "there is undefined valuies"
@@ -133,15 +133,18 @@ exports.deleteUser=function(req,res){
 }
 //User Update
 exports.updateUser = function(req, res) {
-  var id = req.params.username;
+  var id = req.params._id;
   User.findOne({
-    username: id
+    _id: id
   }, function(err, user) {
     if (err) {
       res.json(err);
     }
+
+    var name = req.body.name;
     var password = req.body.password;
     var usertype = req.body.usertype;
+     user.name = name;
     user.password = password;
     user.usertype = usertype;
     user.updateddate = new Date();
@@ -155,16 +158,18 @@ exports.updateUser = function(req, res) {
           }
         });
       }
-
+else {
       res.json({
         status: true,
         respData: {
           data: response
         }
       });
-    })
+    }
+  })
   })
 }
+
 
 //SERIES CRUD
 //Series Post

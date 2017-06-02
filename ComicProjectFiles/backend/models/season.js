@@ -8,7 +8,7 @@ var SeasonSchema = new mongoose.Schema({
     startson: {type: String, required: true},
     endson: {type: String},
     createddate: {type: Date, default: Date.now},
-    updateddate: {Date}
+    updateddate: {type: Date, default: Date.now}
 });
 
 // Export the Mongoose model

@@ -7,7 +7,7 @@ var UserSchema = new mongoose.Schema({
     password: {type: String, required: true},
     name: {type: String, required: true},
     usertype: {type: Number, required: true},
-    updateddate: {Date}
+    updateddate: {type: Date, default: Date.now}
 });
 
 // Export the Mongoose model

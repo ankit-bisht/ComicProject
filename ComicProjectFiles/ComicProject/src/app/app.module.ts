@@ -6,7 +6,7 @@ import { ConnectService } from './connect.service';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
-import {RouterModule,Routes} from '@angular/router';
+import { RouterModule,Routes } from '@angular/router';
 import { Configuration } from "app/config";
 import { SearchComponent } from './search/search.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';

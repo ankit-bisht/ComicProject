@@ -1,3 +1,74 @@
-<p>
-  Welcome admin!
-</p>
+<button class="btn btn-info" (click)="getComic()">
+  Get comics
+</button>
+<button class="btn btn-info" (click)="getSeason()">
+  Get Seasons
+</button>
+<button class="btn btn-info" (click)="getSeries()">
+  Get Series
+</button>
+<div *ngIf="comic">
+<table style="width:100%">
+  <tr>
+    <th>Image</th>
+    <th>Comic Name</th>
+    <th>Story</th>
+  </tr>
+  <br>
+  <tr *ngFor="let item of comic; let i = index">
+    <td><img src={{item.image}}></td>
+    <td>{{item.name}}</td>
+    <td>{{item.story}}</td>
+    <button (click)="saveComicName(item.name)" type="Edit" class="btn btn-info">Edit</button>
+    <button class="btn btn-info" (click)="DeleteUser(item.username)">delete</button>
+  </tr>
+</table>
+</div>
+<div *ngIf="flag">
+  <form  (ngSubmit)="updateComic()">
+    <div class="form-group">
+      <input required type="text" name="name" [(ngModel)]="comicUpdate.name" #name="ngModel"  placeholder="New name" class="form-control">
+      <input required type="text" name="story" [(ngModel)]="comicUpdate.story" #story="ngModel"  placeholder="New story" class="form-control">
+    </div>
+    <button type="submit" [routerLink]="['/admin']" class="btn btn-success">Update</button>
+  </form>
+</div>
+<hr>
+
+<div *ngIf="season">
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>description</th>
+    <th>Stars On</th>
+    <th>Ends On</th>
+  </tr>
+  <br>
+  <tr *ngFor="let item of season; let i = index">
+    <td>{{item.name}}</td>
+    <td>{{item.description}}</td>
+    <td>{{item.startson}}</td>
+    <td>{{item.startson}}</td>
+    <button (click)="save(item._id)" type="submit" class="btn btn-info">Edit</button>
+    <button class="btn btn-info" (click)="DeleteUser(item.username)">delete</button>
+  </tr>
+</table>
+</div>
+<hr>
+<div *ngIf="series">
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>description</th>
+    <th>Created By</th>
+  </tr>
+  <br>
+  <tr *ngFor="let item of series; let i = index">
+    <td>{{item.name}}</td>
+    <td>{{item.description}}</td>
+    <td>{{item.createdby}}</td>
+    <button (click)="save(item._id)" type="submit" class="btn btn-info">Edit</button>
+    <button class="btn btn-info" (click)="DeleteUser(item.username)">delete</button>
+  </tr>
+</table>
+</div>

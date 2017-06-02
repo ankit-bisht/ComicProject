@@ -31,17 +31,14 @@ export class LoginComponent implements OnInit {
 
         }
         else if (this.valid2 == "2") {
-          console.log("admin");
           this.router1.navigate(['/admin']);
 
         }
         else if (this.valid2 == "3") {
-          console.log("user");
           this.router1.navigate(['/user']);
         }
 
       else {
-        console.log("user does not exist");
         alert("Username or Password is Incorrect!");
       }
 

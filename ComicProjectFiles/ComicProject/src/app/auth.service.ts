@@ -12,20 +12,8 @@ import { ConnectService } from './connect.service';
 export class AuthService implements CanActivate {
 usertype;
   constructor(public router1: Router, public auth: ConnectService,public httpService: Http, public UrlObject: Configuration) { }
-// canActivate(route: ActivatedRouteSnapshot) {
-//     var x= route.data;
-//     console.log(x);
-//     if(x[0].usertype==localStorage.getItem("usertype"))
-//     {
-//       return true;
-//     }
-//     else
-//     {
-//       return false;
-//     }
-//   }
+
 canActivate(route: ActivatedRouteSnapshot) {
-   // console.log();
    var x = route.data;
    console.log(localStorage.getItem("usertype"))
    console.log(x)

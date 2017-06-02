@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConnectService } from '../connect.service';
+import { CanActivate, Router } from '@angular/router';
 
 @Component({
   selector: 'app-super-admin',
@@ -8,22 +9,18 @@ import { ConnectService } from '../connect.service';
 })
 export class SuperAdminComponent implements OnInit {
   user: any;
-  Newuser: {
-   username: String,
-   password: String,
-   usertype: String
- }
- =
- {
-   username: '',
-   password: '',
-   usertype: ''
- };
- flag = 0;
- upuser: any;
- users: any;
- status:any;
-  constructor(public search: ConnectService) { }
+  flag=0;
+  userid;
+  Newuser:{
+    name:String,
+    password:String,
+    usertype:String
+  }={
+    name:'',
+    password:'',
+    usertype:''
+  }
+  constructor(public search: ConnectService, public router: Router) { }
 
   ngOnInit() {
   }
@@ -34,7 +31,7 @@ GetUser(){
         this.user = res;
          for(var i=0;i<res.length;i++)
         {
-        var res1 = res[i].password.replace(/[a-zA-Z0-9!@#$%\^&*')(+=._-]/g,'*' );
+        var res1 = res[i].password.replace(/[a-zA-Z0-9!@#$%\^&*');(+=._-]/g,'*' );
         this.user[i].password = res1;
         }
       }
@@ -53,44 +50,30 @@ DeleteUser(data)
       alert(error);
     });
 }
-gusers() {
-  this.search.GetUser()
-    .subscribe(resdata => {
-      this.users = resdata.respData.data;
-      console.log(this.users);
-    })
+save(id){
+  this.userid =id;
+  this.flag=1;
 }
+updateuser(dropdown){
+  this.Newuser.usertype=dropdown;
+  this.search.UpdateUser(this.userid, this.Newuser)
+  .subscribe(res =>{
+    this.GetUser();
+    this.flag=0;
 
-save(username) {
-    this.Newuser.username = username;
-    this.flag = 1;
-    console.log(this.Newuser.username);
+    if(this.GetUser){
+      alert("Update Complete!");
+    }
+    else{
+      error=>alert(error);
+    }
+  })
+
+}
+logout() {
+    localStorage.clear()
+    console.log(localStorage.getItem('role'))
+    this.router.navigate(['/login'])
   }
-
-updateuser(dropdown) {
-    this.Newuser.usertype = dropdown;
-    console.log(this.Newuser);
-    this.search.UpdateUser(this.Newuser)
-      .subscribe(resdata => {
-        this.upuser = resdata.respData.data;
-
-        this.status = resdata.status;
-        console.log(this.status);
-
-        if (this.status = "true") {
-          alert(this.Newuser.username + "Updated");
-          console.log(this.upuser, "updated");
-          this.gusers();
-          this.flag = 0;
-        }
-        else {
-          alert("error");
-          this.gusers();
-        }
-
-      })
-  }
-
-
 
 }

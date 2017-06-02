@@ -71,8 +71,8 @@ DeleteComic(name): Observable<any> {
       data => data.json()
     );
 }
-PostUser(): Observable<any> {
-    return this.httpService.get(this.UrlObject.UrlObj.UserUrl).map(
+PostUser(a): Observable<any> {
+    return this.httpService.post(this.UrlObject.UrlObj.UserUrl,a).map(
       data => data.json()
     );
 }
@@ -91,10 +91,8 @@ PostSeries(): Observable<any> {
       data => data.json()
     );
 }
-UpdateUser(a): Observable<any> {
-   console.log(a, "in service")
-
-   return this.httpService.put(this.UrlObject.UrlObj.UserUpdateUrl, a).map(
+UpdateUser(a,newvalue ): Observable<any> {
+   return this.httpService.put(this.UrlObject.UrlObj.UserUpdateUrl+'/'+ a, newvalue).map(
      data => data.json()
 
    )
