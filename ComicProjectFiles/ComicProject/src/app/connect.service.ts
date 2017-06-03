@@ -97,25 +97,22 @@ UpdateUser(a,newvalue ): Observable<any> {
 
    )
  }
-UpdateSeries(Data){
+UpdateSeries(a,newvalue){
   let headers = new Headers({ 'Content-Type': 'application/json' });
   let options = new RequestOptions({ headers: headers });
-  console.log(Data);
- return this.httpService.put(this.UrlObject.UrlObj.SeriesUpdateUrl, Data, headers).map(
+ return this.httpService.put(this.UrlObject.UrlObj.SeriesUpdateUrl+'/'+ a, newvalue ).map(
    (res: Response) => res.json());
 }
-UpdateSeason(Data){
+UpdateSeason(a,newvalue){
   let headers = new Headers({ 'Content-Type': 'application/json' });
   let options = new RequestOptions({ headers: headers });
-  console.log(Data);
- return this.httpService.put(this.UrlObject.UrlObj.SeasonUpdateUrl, Data, headers).map(
+ return this.httpService.put(this.UrlObject.UrlObj.SeasonUpdateUrl+'/'+a,newvalue).map(
    (res: Response) => res.json());
 }
-UpdateComic(Data){
+UpdateComic(a,Data){
   let headers = new Headers({ 'Content-Type': 'application/json' });
   let options = new RequestOptions({ headers: headers });
-  console.log(Data);
- return this.httpService.put(this.UrlObject.UrlObj.ComicUpdateUrl, Data, headers).map(
+ return this.httpService.put(this.UrlObject.UrlObj.ComicUpdateUrl+'/'+ a,Data).map(
    (res: Response) => res.json());
 }
 

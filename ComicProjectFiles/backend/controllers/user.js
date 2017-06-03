@@ -144,7 +144,7 @@ exports.updateUser = function(req, res) {
     var name = req.body.name;
     var password = req.body.password;
     var usertype = req.body.usertype;
-     user.name = name;
+    user.name = name;
     user.password = password;
     user.usertype = usertype;
     user.updateddate = new Date();
@@ -260,38 +260,43 @@ exports.deleteSeries=function(req,res){
     })
 }
 //Series Update
-exports.updateSeries = function (req, res) {
-    var Name = req.body.name;
-    User.findOne({ name: Name }, function (err, user) {
-        if (err) {
-            res.json(err);
-        }
-        else{
-          res.json("data");
-        }
-        // var name = req.body.name;
-        // var description = req.body.description;
-        // var createdby = req.body.createdby;
-        // user.name = name;
-        // user.description = description;
-        // user.createdby = createdby;
-        // user.updateddate = new Date();
-        //
-        // user.save(function (err, response) {
-        //     if (err) {
-        //         res.json(err);
-        //     }
-        //
-        //     res.json({
-        //         "status": true,
-        //         "respData": {
-        //             "data": response
-        //         }
-        //     });
-        // })
-    })
-}
+exports.updateSeries = function(req, res) {
+  var id = req.params._id;
+  Comics.findOne({
+    _id: id
+  }, function(err, series) {
+    if (err) {
+      res.json(err);
+    }
 
+    var name = req.body.name;
+    var description = req.body.description;
+    var createdby = req.body.createdby;
+    series.name = name;
+    series.description = description;
+    series.createdby = createdby;
+    series.updateddate = new Date();
+
+    series.save(function(err, response) {
+      if (err) {
+        res.json({
+          status: false,
+          respData: {
+            data: err
+          }
+        });
+      }
+else {
+      res.json({
+        status: true,
+        respData: {
+          data: response
+        }
+      });
+    }
+  })
+  })
+}
 
 //SEASON CURD
 //season post
@@ -383,37 +388,45 @@ exports.deleteSeason=function(req,res){
     })
 }
 //update season
-exports.updateSeason = function (req, res) {
+exports.updateSeason = function(req, res) {
+  var id = req.params._id;
+  Season.findOne({
+    _id: id
+  }, function(err, season) {
+    if (err) {
+      res.json(err);
+    }
+
     var name = req.body.name;
-    User.findOne({ name: name }, function (err, user) {
-        if (err) {
-            res.json(err);
+    var description = req.body.description;
+    var startson = req.body.startson;
+    var endson = req.body.endsson;
+    season.name = name;
+    season.description = description;
+    season.startson = startson;
+    season.endson = endson;
+    season.updateddate = new Date();
+
+    season.save(function(err, response) {
+      if (err) {
+        res.json({
+          status: false,
+          respData: {
+            data: err
+          }
+        });
+      }
+else {
+      res.json({
+        status: true,
+        respData: {
+          data: response
         }
-        var name = req.body.name;
-        var description = req.body.description;
-        var startson = req.body.startson;
-        var endson = req.body.endson;
-        user.name = name;
-        user.description = description;
-        user.startson = startson;
-        user.endson = endson;
-        user.updateddate = new Date();
-
-        user.save(function (err, response) {
-            if (err) {
-                res.json(err);
-            }
-
-            res.json({
-                "status": true,
-                "respData": {
-                    "data": response
-                }
-            });
-        })
-    })
+      });
+    }
+  })
+  })
 }
-
 
 //COMICS CURD
 //comics post
@@ -504,31 +517,38 @@ exports.deleteComic=function(req,res){
     })
 }
 //comic update
-exports.updateComic = function (req, res) {
+exports.updateComic = function(req, res) {
+  var id = req.params._id;
+  Comics.findOne({
+    _id: id
+  }, function(err, comics) {
+    if (err) {
+      res.json(err);
+    }
+
     var name = req.body.name;
-    User.findOne({ name: name }, function (err, user) {
-        if (err) {
-            res.json(err);
+    var story = req.body.story;
+    comics.name = name;
+    comics.story = story;
+    comics.updateddate = new Date();
+
+    comics.save(function(err, response) {
+      if (err) {
+        res.json({
+          status: false,
+          respData: {
+            data: err
+          }
+        });
+      }
+else {
+      res.json({
+        status: true,
+        respData: {
+          data: response
         }
-        var name = req.body.name;
-        var image = req.body.password;
-        var story = req.body.story;
-        user.name = name;
-        user.image = image;
-        user.story = story;
-        user.updateddate = new Date();
-
-        user.save(function (err, response) {
-            if (err) {
-                res.json(err);
-            }
-
-            res.json({
-                "status": true,
-                "respData": {
-                    "data": response
-                }
-            });
-        })
-    })
+      });
+    }
+  })
+  })
 }

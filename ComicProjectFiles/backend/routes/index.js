@@ -23,8 +23,7 @@ router.route('/v1/series/search/:reg')
   .get(userController.searchSeries)
 router.route('/v1/series/delete/:name')
   .delete(userController.deleteSeries)
-  .put(userController.updateSeries)
-router.route('/v1/series/update/:username')
+router.route('/v1/series/update/:_id')
   .put(userController.updateSeries)
 
 //season apis
@@ -35,8 +34,7 @@ router.route('/v1/season/search/:reg')
   .get(userController.searchSeason)
 router.route('/v1/season/delete/:name')
   .delete(userController.deleteSeason)
-  .put(userController.updateSeason)
-router.route('/v1/season/update/:username')
+router.route('/v1/season/update/:_id')
   .put(userController.updateSeason)
 
 //comic apis
@@ -47,8 +45,7 @@ router.route('/v1/comic/search/:reg')
   .get(userController.searchComic)
 router.route('/v1/comic/delete/:name')
   .delete(userController.deleteComic)
-  .put(userController.updateComic)
-router.route('/v1/comic/update/:username')
+router.route('/v1/comic/update/:_id')
   .put(userController.updateComic)
 
 module.exports = router;

@@ -7,7 +7,7 @@ var ComicsSchema = new mongoose.Schema({
     image: {type: String, required: true},
     story: {type: String, required: true},
     createddate: {type: Date, default: Date.now},
-    updateddate: {Date}
+    updateddate: {type: Date, default: Date.now}
 });
 
 // Export the Mongoose model

@@ -11,14 +11,14 @@ export class Configuration {
        SeriesUrl: 'http://localhost:3003/api/v1/series',
        SeriesSearchUrl: 'http://localhost:3003/api/v1/series/search',
        SeriesDeleteUrl: 'http://localhost:3003/api/v1/series/delete',
-       SeriesUpdateUrl: 'http://localhost:3003/api/v1/series/update/:_id',
+       SeriesUpdateUrl: 'http://localhost:3003/api/v1/series/update',
        SeasonUrl: 'http://localhost:3003/api/v1/season',
        SeasonSearchUrl: 'http://localhost:3003/api/v1/season/search',
        SeasonDeleteUrl: 'http://localhost:3003/api/v1/season/delete',
-       SeasonUpdateUrl: 'http://localhost:3003/api/v1/season/update/:_id',
+       SeasonUpdateUrl: 'http://localhost:3003/api/v1/season/update',
        ComicUrl: 'http://localhost:3003/api/v1/comic',
        ComicSearchUrl: 'http://localhost:3003/api/v1/comic/search',
        ComicDeleteUrl: 'http://localhost:3003/api/v1/comic/delete',
-       ComicUpdateUrl: 'http://localhost:3003/api/v1/comic/update/:_id'
+       ComicUpdateUrl: 'http://localhost:3003/api/v1/comic/update'
     }
 }
