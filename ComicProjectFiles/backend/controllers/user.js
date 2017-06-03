@@ -239,14 +239,14 @@ exports.searchSeries = function (req, res) {
     })};
 //Series delete
 exports.deleteSeries=function(req,res){
-    var name = req.params.name;
-    User.findOne({name: name}, function(err, user){
+    var id = req.params.id;
+    Series.findOne({_id: id}, function(err, user){
         if(err){
             res.json(err);
         }
 
-        if(user){
-           User.remove({name: name}, function(err){
+        if(series){
+           Series.remove({_id: id}, function(err){
                 if(err){
                     res.json(err);
                 }
@@ -262,7 +262,7 @@ exports.deleteSeries=function(req,res){
 //Series Update
 exports.updateSeries = function(req, res) {
   var id = req.params._id;
-  Comics.findOne({
+  Series.findOne({
     _id: id
   }, function(err, series) {
     if (err) {
@@ -367,14 +367,14 @@ exports.searchSeason = function (req, res) {
     })};
 //Season delete
 exports.deleteSeason=function(req,res){
-    var name = req.params.name;
-    User.findOne({name: name}, function(err, user){
+    var id = req.params.id;
+    Season.findOne({_id: id}, function(err, user){
         if(err){
             res.json(err);
         }
 
-        if(user){
-           User.remove({name: name}, function(err){
+        if(season){
+           User.remove({_id: id}, function(err){
                 if(err){
                     res.json(err);
                 }
@@ -496,14 +496,14 @@ exports.getComic=function(req,res){
 }
 //Comics Delete
 exports.deleteComic=function(req,res){
-    var name = req.params.name;
-    User.findOne({name: name}, function(err, user){
+    var id = req.params.id;
+    Comics.findOne({_id: id}, function(err, user){
         if(err){
             res.json(err);
         }
 
-        if(user){
-           User.remove({name: name}, function(err){
+        if(comic){
+           Comics.remove({_id: id}, function(err){
                 if(err){
                     res.json(err);
                 }

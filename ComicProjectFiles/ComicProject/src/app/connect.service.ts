@@ -50,13 +50,13 @@ GetSearchSeason(SearchParam): Observable<any> {
       data => data.json()
     );
 }
-DeleteSeries(name): Observable<any> {
-    return this.httpService.get(this.UrlObject.UrlObj.SeriesDeleteUrl + '/' + name).map(
+DeleteSeries(id): Observable<any> {
+    return this.httpService.get(this.UrlObject.UrlObj.SeriesDeleteUrl + '/' + id).map(
       data => data.json()
     );
 }
-DeleteSeason(name): Observable<any> {
-    return this.httpService.get(this.UrlObject.UrlObj.SeasonDeleteUrl + '/' + name).map(
+DeleteSeason(id): Observable<any> {
+    return this.httpService.get(this.UrlObject.UrlObj.SeasonDeleteUrl + '/' + id).map(
       data => data.json()
     );
 }
@@ -65,9 +65,9 @@ DeleteUser(username): Observable<any> {
       data => data.json()
     );
 }
-DeleteComic(name): Observable<any> {
+DeleteComic(id): Observable<any> {
 
-    return this.httpService.get(this.UrlObject.UrlObj.ComicDeleteUrl + '/' + name).map(
+    return this.httpService.get(this.UrlObject.UrlObj.ComicDeleteUrl + '/' + id).map(
       data => data.json()
     );
 }
@@ -109,10 +109,10 @@ UpdateSeason(a,newvalue){
  return this.httpService.put(this.UrlObject.UrlObj.SeasonUpdateUrl+'/'+a,newvalue).map(
    (res: Response) => res.json());
 }
-UpdateComic(a,Data){
+UpdateComic(a,newvalue){
   let headers = new Headers({ 'Content-Type': 'application/json' });
   let options = new RequestOptions({ headers: headers });
- return this.httpService.put(this.UrlObject.UrlObj.ComicUpdateUrl+'/'+ a,Data).map(
+ return this.httpService.put(this.UrlObject.UrlObj.ComicUpdateUrl+'/'+ a,newvalue).map(
    (res: Response) => res.json());
 }
 

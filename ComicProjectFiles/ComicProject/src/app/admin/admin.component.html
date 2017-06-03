@@ -21,7 +21,7 @@
     <td>{{item.name}}</td>
     <td>{{item.story}}</td>
     <button (click)="saveComicId(item._id)" type="Edit" class="btn btn-info">Edit</button>
-    <button class="btn btn-info" (click)="DeleteUser(item.username)">delete</button>
+    <button class="btn btn-info" (click)="deleteComic(item._id)">delete</button>
   </tr>
 </table>
 </div>
@@ -51,7 +51,7 @@
     <td>{{item.startson}}</td>
     <td>{{item.endson}}</td>
     <button (click)="saveSeasonId(item._id)" type="submit" class="btn btn-info">Edit</button>
-    <button class="btn btn-info" (click)="DeleteUser(item.username)">delete</button>
+    <button class="btn btn-info" (click)="deleteSeason(item._id)">delete</button>
   </tr>
 </table>
 </div>
@@ -75,17 +75,15 @@
   <tr>
     <th>Name</th>
     <th>description</th>
-    <th>starts on</th>
-    <th>ends on</th>
+    <th>Created By</th>
   </tr>
   <br>
   <tr *ngFor="let item of series; let i = index">
     <td>{{item.name}}</td>
     <td>{{item.description}}</td>
-    <td>{{item.startson}}</td>
-    <td>{{item.endson}}</td>
+    <td>{{item.createdby}}</td>
     <button (click)="saveSeriesId(item._id)" type="submit" class="btn btn-info">Edit</button>
-    <button class="btn btn-info" (click)="DeleteUser(item.username)">delete</button>
+    <button class="btn btn-info" (click)="deleteSeries(item._id)">delete</button>
   </tr>
 </table>
 </div>
@@ -95,8 +93,7 @@
     <div class="form-group">
       <input required type="text" name="name" [(ngModel)]="newSeason.name" #name="ngModel"  placeholder="New name" class="form-control">
       <input required type="text" name="description" [(ngModel)]="newSeason.description" #description="ngModel"  placeholder="New description" class="form-control">
-      <input required type="text" name="startson" [(ngModel)]="newSeason.startson" #startson="ngModel"  placeholder="New start date" class="form-control">
-      <input required type="text" name="endson" [(ngModel)]="newSeason.endson" #endson="ngModel"  placeholder="New end date" class="form-control">
-    <button type="submit" [routerLink]="['/admin']" class="btn btn-success">Update Season</button>
+      <input required type="text" name="createdby" [(ngModel)]="newSeason.createdby" #createdby="ngModel"  placeholder="New start date" class="form-control">
+      <button type="submit" [routerLink]="['/admin']" class="btn btn-success">Update Series</button>
 </div>
   </form>

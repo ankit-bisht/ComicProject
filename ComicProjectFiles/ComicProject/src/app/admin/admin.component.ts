@@ -13,7 +13,7 @@ export class AdminComponent implements OnInit {
   comic:any;
   season:any;
   series:any;
-  comicName:any;
+  id:any;
   comicid;
   seriesid;
   seasonid;
@@ -36,6 +36,16 @@ export class AdminComponent implements OnInit {
     description:'',
     startson:'',
     endson:''
+  }
+  newSeries:{
+    name:String,
+    description:String,
+    createdby:String
+  }=
+  {
+    name:'',
+    description:'',
+    createdby:''
   }
   constructor(public router: Router, public search: ConnectService) { }
 
@@ -81,6 +91,27 @@ export class AdminComponent implements OnInit {
 
   }
 
+saveSeriesId(id){
+      this.flag1=1;
+      this.seriesid=id;
+  }
+  updateSeries(){
+    this.search.UpdateSeries(this.seriesid,this.newSeries)
+    .subscribe(res =>{
+      this.getSeries();
+      this.flag2=0;
+
+      if(this.getSeries){
+        alert("Update Complete!");
+      }
+      else{
+        error=>alert(error);
+      }
+    })
+
+  }
+
+
   logout() {
       localStorage.clear()
       console.log(localStorage.getItem('role'))
@@ -102,5 +133,20 @@ export class AdminComponent implements OnInit {
     this.search.GetSeries().subscribe(res=>{
       this.series=res;
     })
+  }
+  deleteComic(id){
+    this.search.DeleteComic(this.id).subscribe(res=>
+    console.log(this.id)
+    )
+  }
+  deleteSeries(id){
+    this.search.DeleteSeries(this.id).subscribe(res=>
+    console.log(this.id)
+    )
+  }
+  deleteSeason(id){
+    this.search.DeleteSeason(this.id).subscribe(res=>
+    console.log(this.id)
+    )
   }
 }
