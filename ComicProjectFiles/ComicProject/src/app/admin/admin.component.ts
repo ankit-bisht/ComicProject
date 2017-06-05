@@ -114,8 +114,7 @@ saveSeriesId(id){
 
   logout() {
       localStorage.clear()
-      console.log(localStorage.getItem('role'))
-      this.router.navigate(['/login'])
+      this.router.navigate(['/header'])
     }
 
 

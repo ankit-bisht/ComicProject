@@ -7,26 +7,33 @@ var Comics = require('../models/comics');
 //user Post
 exports.postUser = function (req, res) {
     if (req.body.usertype == 1 || req.body.usertype == 2 || req.body.usertype == 3){
-      console.log("pass");
       var user = new User({
           username: req.body.username,
-          password: req.body.password,
+          password: enc_pass,
           name: req.body.name,
           usertype: req.body.usertype
       });
+User.findOne({username: user.username}, function(request, response){
+  if(response){
+    res.json({
+      data: "exist"
+    })
+  }
+  else{
+    user.save(function (err, response) {
+        if(err) {
+            res.json(err);
+        }
+        else{
+          res.json({
+              success: true,
+              body: response
+          })
+        }
+    });
+  }
+})
 
-
-      user.save(function (err, response) {
-          if(err) {
-              res.json(err);
-          }
-          else{
-            res.json({
-                success: true,
-                body: response
-            })
-          }
-      });
     }else{
       res.json({
           success: false,

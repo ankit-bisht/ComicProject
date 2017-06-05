@@ -23,7 +23,8 @@ const rou1:Routes=[
      {path : 'user', component : UserComponent,canActivate: [AuthService],data:[{usertype:'3'}]},
      {path : 'admin', component : AdminComponent,canActivate: [AuthService],data:[{usertype:'2'}]},
      {path : 'search-result', component : SearchResultComponent},
-     {path : 'register', component : RegisterComponent}
+     {path : 'register', component : RegisterComponent},
+     {path : 'header', component : HeaderComponent}
 ];
 
 @NgModule({

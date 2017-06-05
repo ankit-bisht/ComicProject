@@ -26,6 +26,7 @@ usertype:number;
   ngOnInit() {
   }
 registerUser(){
+  
   this.search.PostUser(this.Newuser).subscribe(res => {
     if(res.name!="ValidationError")
     {

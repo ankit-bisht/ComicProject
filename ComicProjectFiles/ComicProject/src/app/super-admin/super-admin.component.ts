@@ -82,9 +82,13 @@ addUser(dropdown){
   this.search.PostUser(this.Newuser).subscribe(res=>{
     this.GetUser();
     this.flag1=0;
-    if(this.GetUser)
+    if(res.data!="exist")
     {
       alert("User has been added!");
+    }
+    else if(res.data="exist")
+    {
+      alert("username already exist!")
     }
     else{
       error=>alert(error);
@@ -94,8 +98,7 @@ addUser(dropdown){
 }
 logout() {
     localStorage.clear()
-    console.log(localStorage.getItem('role'))
-    this.router.navigate(['/login'])
+    this.router.navigate(['/header'])
   }
 
 }
