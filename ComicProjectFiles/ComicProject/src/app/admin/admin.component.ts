@@ -136,17 +136,23 @@ saveSeriesId(id){
   }
   deleteComic(id){
     this.search.DeleteComic(this.id).subscribe(res=>
-    console.log(this.id)
-    )
+    alert("Comic Deleted")
+    ,error => {
+      alert(error);
+    });
   }
   deleteSeries(id){
     this.search.DeleteSeries(this.id).subscribe(res=>
-    console.log(this.id)
-    )
+    alert("Series Deleted")
+    ,error => {
+      alert(error);
+    });
   }
   deleteSeason(id){
     this.search.DeleteSeason(this.id).subscribe(res=>
-    console.log(this.id)
-    )
+    alert("Season Deleted")
+    ,error => {
+      alert(error);
+    });
   }
 }
