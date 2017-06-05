@@ -15,9 +15,7 @@ usertype;
 
 canActivate(route: ActivatedRouteSnapshot) {
    var x = route.data;
-   console.log(localStorage.getItem("usertype"))
-   console.log(x)
-   if (x[0].role == localStorage.getItem("usertype")) {
+   if (x[0].usertype == localStorage.getItem("usertype")) {
      return true;
    }
    else {

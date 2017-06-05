@@ -2,9 +2,7 @@
 <button class="btn btn-info" (click)="GetUser()">
 Get Users
 </button>
-<button class="btn btn-info" (click)="add()">
-Add User
-</button>
+
 <div *ngIf="user">
 <table style="width:100%">
   <tr>
@@ -37,6 +35,9 @@ Add User
     <button type="submit" [routerLink]="['/super-admin']" class="btn btn-success">Update</button>
   </form>
 </div>
+<button class="btn btn-info" (click)="add()">
+Add User
+</button>
 
 <div *ngIf="flag1">
   <form  (ngSubmit)="addUser(dropdown.value)">

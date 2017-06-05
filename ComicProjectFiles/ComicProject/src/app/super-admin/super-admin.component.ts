@@ -75,6 +75,7 @@ updateuser(dropdown){
 }
 add(){
   this.flag1=1;
+  this.flag=0;
 }
 addUser(dropdown){
   this.Newuser.usertype=dropdown;

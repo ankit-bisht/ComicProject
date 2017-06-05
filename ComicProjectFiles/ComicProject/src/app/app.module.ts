@@ -19,9 +19,9 @@ import { RegisterComponent } from './register/register.component';
 const rou1:Routes=[
      {path : 'login', component : LoginComponent},
      {path : 'search', component : SearchComponent},
-     {path : 'super-admin', component : SuperAdminComponent},
-     {path : 'user', component : UserComponent},
-     {path : 'admin', component : AdminComponent},
+     {path : 'super-admin', component : SuperAdminComponent,canActivate: [AuthService],data:[{usertype:'1'}]},
+     {path : 'user', component : UserComponent,canActivate: [AuthService],data:[{usertype:'3'}]},
+     {path : 'admin', component : AdminComponent,canActivate: [AuthService],data:[{usertype:'2'}]},
      {path : 'search-result', component : SearchResultComponent},
      {path : 'register', component : RegisterComponent}
 ];
