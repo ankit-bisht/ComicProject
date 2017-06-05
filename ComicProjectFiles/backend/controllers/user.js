@@ -83,7 +83,6 @@ exports.verifyUser = function (req, res) {
 
     username1 = req.body.username;
     password1 = req.body.password;
-    console.log(username1);
     User.findOne({
         username: username1,
         password: password1
@@ -239,14 +238,14 @@ exports.searchSeries = function (req, res) {
     })};
 //Series delete
 exports.deleteSeries=function(req,res){
-    var id = req.params.id;
-    Series.findOne({_id: id}, function(err, user){
+    var _id = req.params._id;
+    Series.findOne({_id: _id}, function(err, series){
         if(err){
             res.json(err);
         }
 
         if(series){
-           Series.remove({_id: id}, function(err){
+           Series.remove({_id: _id}, function(err){
                 if(err){
                     res.json(err);
                 }
@@ -367,14 +366,14 @@ exports.searchSeason = function (req, res) {
     })};
 //Season delete
 exports.deleteSeason=function(req,res){
-    var id = req.params.id;
-    Season.findOne({_id: id}, function(err, user){
+    var _id = req.params._id;
+    Season.findOne({_id: _id}, function(err, season){
         if(err){
             res.json(err);
         }
 
         if(season){
-           User.remove({_id: id}, function(err){
+           User.remove({_id: _id}, function(err){
                 if(err){
                     res.json(err);
                 }
@@ -496,14 +495,14 @@ exports.getComic=function(req,res){
 }
 //Comics Delete
 exports.deleteComic=function(req,res){
-    var id = req.params.id;
-    Comics.findOne({_id: id}, function(err, user){
+    var _id = req.params._id;
+    Comics.findOne({_id: _id}, function(err, comic){
         if(err){
             res.json(err);
         }
 
         if(comic){
-           Comics.remove({_id: id}, function(err){
+           Comics.remove({_id: _id}, function(err){
                 if(err){
                     res.json(err);
                 }

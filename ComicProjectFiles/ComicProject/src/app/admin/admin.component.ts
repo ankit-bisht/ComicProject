@@ -92,7 +92,7 @@ export class AdminComponent implements OnInit {
   }
 
 saveSeriesId(id){
-      this.flag1=1;
+      this.flag2=1;
       this.seriesid=id;
   }
   updateSeries(){
@@ -134,25 +134,34 @@ saveSeriesId(id){
       this.series=res;
     })
   }
-  deleteComic(id){
-    this.search.DeleteComic(this.id).subscribe(res=>
-    alert("Comic Deleted")
-    ,error => {
-      alert(error);
-    });
+  deleteComic(data)
+  {
+     this.search.DeleteComic(data).subscribe(res => {
+      alert("Deleted" + data);
+      this.getComic();
+    }
+      ,error => {
+        alert(error);
+      });
   }
-  deleteSeries(id){
-    this.search.DeleteSeries(this.id).subscribe(res=>
-    alert("Series Deleted")
-    ,error => {
-      alert(error);
-    });
+  deleteSeries(data)
+  {
+     this.search.DeleteSeries(data).subscribe(res => {
+      alert("Deleted" + data);
+      this.getSeries();
+    }
+      ,error => {
+        alert(error);
+      });
   }
-  deleteSeason(id){
-    this.search.DeleteSeason(this.id).subscribe(res=>
-    alert("Season Deleted")
-    ,error => {
-      alert(error);
-    });
+  deleteSeason(data)
+  {
+     this.search.DeleteSeason(data).subscribe(res => {
+      alert("Deleted" + data);
+      this.getSeason();
+    }
+      ,error => {
+        alert(error);
+      });
   }
 }

@@ -10,15 +10,18 @@ import { CanActivate, Router } from '@angular/router';
 export class SuperAdminComponent implements OnInit {
   user: any;
   flag=0;
+  flag1=0;
   userid;
   Newuser:{
     name:String,
     password:String,
-    usertype:String
+    usertype:String,
+    username:String
   }={
     name:'',
     password:'',
-    usertype:''
+    usertype:'',
+    username:''
   }
   constructor(public search: ConnectService, public router: Router) { }
 
@@ -63,6 +66,24 @@ updateuser(dropdown){
 
     if(this.GetUser){
       alert("Update Complete!");
+    }
+    else{
+      error=>alert(error);
+    }
+  })
+
+}
+add(){
+  this.flag1=1;
+}
+addUser(dropdown){
+  this.Newuser.usertype=dropdown;
+  this.search.PostUser(this.Newuser).subscribe(res=>{
+    this.GetUser();
+    this.flag1=0;
+    if(this.GetUser)
+    {
+      alert("User has been added!");
     }
     else{
       error=>alert(error);

@@ -51,12 +51,12 @@ GetSearchSeason(SearchParam): Observable<any> {
     );
 }
 DeleteSeries(id): Observable<any> {
-    return this.httpService.get(this.UrlObject.UrlObj.SeriesDeleteUrl + '/' + id).map(
+    return this.httpService.delete(this.UrlObject.UrlObj.SeriesDeleteUrl + '/' + id).map(
       data => data.json()
     );
 }
 DeleteSeason(id): Observable<any> {
-    return this.httpService.get(this.UrlObject.UrlObj.SeasonDeleteUrl + '/' + id).map(
+    return this.httpService.delete(this.UrlObject.UrlObj.SeasonDeleteUrl + '/' + id).map(
       data => data.json()
     );
 }
@@ -67,7 +67,7 @@ DeleteUser(username): Observable<any> {
 }
 DeleteComic(id): Observable<any> {
 
-    return this.httpService.get(this.UrlObject.UrlObj.ComicDeleteUrl + '/' + id).map(
+    return this.httpService.delete(this.UrlObject.UrlObj.ComicDeleteUrl + '/' + id).map(
       data => data.json()
     );
 }
@@ -76,18 +76,18 @@ PostUser(a): Observable<any> {
       data => data.json()
     );
 }
-PostSeason(): Observable<any> {
-    return this.httpService.get(this.UrlObject.UrlObj.SeasonUrl).map(
+PostSeason(a): Observable<any> {
+    return this.httpService.get(this.UrlObject.UrlObj.SeasonUrl,a).map(
       data => data.json()
     );
 }
-PostComic(): Observable<any> {
-    return this.httpService.get(this.UrlObject.UrlObj.ComicUrl).map(
+PostComic(a): Observable<any> {
+    return this.httpService.get(this.UrlObject.UrlObj.ComicUrl,a).map(
       data => data.json()
     );
 }
-PostSeries(): Observable<any> {
-    return this.httpService.get(this.UrlObject.UrlObj.SeriesUrl).map(
+PostSeries(a): Observable<any> {
+    return this.httpService.get(this.UrlObject.UrlObj.SeriesUrl,a).map(
       data => data.json()
     );
 }

@@ -2,6 +2,9 @@
 <button class="btn btn-info" (click)="GetUser()">
 Get Users
 </button>
+<button class="btn btn-info" (click)="add()">
+Add User
+</button>
 <div *ngIf="user">
 <table style="width:100%">
   <tr>
@@ -26,6 +29,21 @@ Get Users
     <div class="form-group">
       <input required type="text" name="name" [(ngModel)]="Newuser.name" #name="ngModel"  placeholder="New name" class="form-control">
       <input required type="password" name="password" [(ngModel)]="Newuser.password" #password="ngModel"  placeholder="New password" class="form-control">
+    </div>
+         <select #dropdown>
+  <option  value="2" name="usertype" ngDefaultControl>Admin</option>
+  <option  value="3" name="usertype" ngDefaultControl>User</option>
+</select>
+    <button type="submit" [routerLink]="['/super-admin']" class="btn btn-success">Update</button>
+  </form>
+</div>
+
+<div *ngIf="flag1">
+  <form  (ngSubmit)="addUser(dropdown.value)">
+    <div class="form-group">
+      <input required type="text" name="username" [(ngModel)]="Newuser.username" #username="ngModel" placeholder="Type Username" class="form-control">
+      <input required type="text" name="name" [(ngModel)]="Newuser.name" #name="ngModel"  placeholder="Type Name" class="form-control">
+      <input required type="password" name="password" [(ngModel)]="Newuser.password" #password="ngModel"  placeholder="Type password" class="form-control">
     </div>
          <select #dropdown>
   <option  value="2" name="usertype" ngDefaultControl>Admin</option>
