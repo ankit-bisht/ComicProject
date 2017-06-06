@@ -30,6 +30,11 @@ GetSeries(): Observable<any> {
       data => data.json()
     );
 }
+GetComment(a): Observable<any> {
+    return this.httpService.get(this.UrlObject.UrlObj.GetCommentUrl+'/'+a).map(
+      data => data.json()
+    );
+}
 GetSearchUser(SearchParam): Observable<any> {
     return this.httpService.get(this.UrlObject.UrlObj.UserSearchUrl + '/' + SearchParam).map(
       data => data.json()
@@ -77,17 +82,22 @@ PostUser(a): Observable<any> {
     );
 }
 PostSeason(a): Observable<any> {
-    return this.httpService.get(this.UrlObject.UrlObj.SeasonUrl,a).map(
+    return this.httpService.post(this.UrlObject.UrlObj.SeasonUrl,a).map(
       data => data.json()
     );
 }
 PostComic(a): Observable<any> {
-    return this.httpService.get(this.UrlObject.UrlObj.ComicUrl,a).map(
+    return this.httpService.post(this.UrlObject.UrlObj.ComicUrl,a).map(
       data => data.json()
     );
 }
 PostSeries(a): Observable<any> {
-    return this.httpService.get(this.UrlObject.UrlObj.SeriesUrl,a).map(
+    return this.httpService.post(this.UrlObject.UrlObj.SeriesUrl,a).map(
+      data => data.json()
+    );
+}
+PostComment(a): Observable<any> {
+    return this.httpService.post(this.UrlObject.UrlObj.UserCommentUrl,a).map(
       data => data.json()
     );
 }

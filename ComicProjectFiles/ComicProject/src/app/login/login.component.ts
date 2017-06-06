@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
     this.auth.Postlogin(form1.value).subscribe(res => {
       this.valid =res.respData.data;
       this.valid2 = this.valid.usertype;
+      localStorage.setItem('username',res.respData.data.username);
       localStorage.setItem('usertype',res.respData.data.usertype);
         if (this.valid2 == "1") {
           this.router1.navigate(['/super-admin']);

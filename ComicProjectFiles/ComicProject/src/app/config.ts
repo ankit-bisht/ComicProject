@@ -8,6 +8,8 @@ export class Configuration {
        UserDeleteUrl: 'http://localhost:3003/api/v1/user/delete',
        VerifyUserUrl: 'http://localhost:3003/api/v1/user/verify',
        UserUpdateUrl: 'http://localhost:3003/api/v1/user/update',
+       UserCommentUrl: 'http://localhost:3003/api/v1/user/comment',
+       GetCommentUrl: 'http://localhost:3003/api/v1/user/comment_id',
        SeriesUrl: 'http://localhost:3003/api/v1/series',
        SeriesSearchUrl: 'http://localhost:3003/api/v1/series/search',
        SeriesDeleteUrl: 'http://localhost:3003/api/v1/series/delete',

@@ -2,8 +2,43 @@ var User = require('../models/user');
 var Series = require('../models/series');
 var Season = require('../models/season');
 var Comics = require('../models/comics');
+var Comment = require('../models/comments');
 var btoa = require('btoa');
 var atob = require('btoa');
+
+//COMMENT
+exports.postComment = function (req, res) {
+    var comment = new Comment({
+        username: req.body.username,
+        comment: req.body.comment,
+        comicID: req.body.comicID
+        });
+
+    comment.save(function (err, response) {
+        if(err) {
+            return (err);
+        }
+
+        res.json({
+            success: true,
+            body: response
+        })
+
+    });
+};
+//Comment get
+exports.getComment=function(req,res){
+  var id = req.params.comicID;
+    Comment.find({
+      comicID:id
+    }, function(err, response){
+        if(err) {
+            return res.json(req, res, err);
+        }
+
+        res.json(response);
+    })
+}
 
 //USERS CRUD
 //user Post

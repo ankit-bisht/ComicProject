@@ -1,0 +1,58 @@
+<button class="btn btn-info" (click)="getComic()">
+  Get All comics
+</button>
+<input type="text" class="form-control input-sm" placeholder="Search" [(ngModel)]="searchitem1">
+<button class="btn btn-info" (click)="searchComic()">
+  Search Comic
+</button>
+<button class="btn btn-success" (click)="logout()">LOGOUT</button>
+
+
+
+<div *ngIf="comic">
+<table style="width:100%">
+  <tr>
+    <th>Image</th>
+    <th>Comic Name</th>
+    <th>Story</th>
+  </tr>
+  <br>
+  <tr *ngFor="let item of comic; let i = index">
+    <td><img src={{item.image}}></td>
+    <td>{{item.name}}</td>
+    <td>{{item.story}}</td>
+    <button (click)="getComment(item._id)" class="btn btn-info">Show Comments</button>
+    <input type="text" class="form-control input-sm" placeholder="Comment" [(ngModel)]="comm">
+    <button class="btn btn-info"  (click)="comment(item._id)">
+        Comment
+  </button>
+  </tr>
+</table>
+</div>
+
+<div *ngIf="GetSearchComic">
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Created Date</th>
+    <th>Image</th>
+  </tr>
+  <br>
+  <tr>
+    <td>{{GetSearchComic.name}}</td>
+    <td>{{GetSearchComic.createddate}}</td>
+    <td><img src={{GetSearchComic.image}} height="175px" width="175px"></td>
+
+    <button (click)="getComment(GetSearchComic._id)" class="btn btn-info">Show Comments</button>
+    <input type="text" class="form-control input-sm" placeholder="Comment" [(ngModel)]="comm">
+    <button class="btn btn-info"  (click)="comment(GetSearchComic._id)">
+        Comment
+  </button>
+  </tr>
+</table>
+</div>
+<!-- <tr *ngFor="let item of res; let i = index">
+  <td>{{item.username}}></td>
+  <td>{{item.comicID}}</td>
+  <td>{{item.comment}}</td>
+</tr> -->

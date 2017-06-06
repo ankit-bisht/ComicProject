@@ -14,6 +14,10 @@ router.route('/v1/user/update/:_id')
   .put(userController.updateUser)
 router.route('/v1/user/verify')
   .post(userController.verifyUser)
+router.route('/v1/user/comment')
+  .post(userController.postComment)
+router.route('/v1/user/comment_id/:comicID')
+  .get(userController.getComment)
 
 //series apis
 router.route('/v1/series')
