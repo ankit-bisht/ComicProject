@@ -13,7 +13,6 @@ import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
 import { AuthService } from './auth.service';
-import { SearchResultComponent } from './search-result/search-result.component';
 import { RegisterComponent } from './register/register.component';
 
 const rou1:Routes=[
@@ -22,7 +21,6 @@ const rou1:Routes=[
      {path : 'super-admin', component : SuperAdminComponent,canActivate: [AuthService],data:[{usertype:'1'}]},
      {path : 'user', component : UserComponent,canActivate: [AuthService],data:[{usertype:'3'}]},
      {path : 'admin', component : AdminComponent,canActivate: [AuthService],data:[{usertype:'2'}]},
-     {path : 'search-result', component : SearchResultComponent},
      {path : 'register', component : RegisterComponent},
      {path : 'header', component : HeaderComponent}
 ];
@@ -36,7 +34,6 @@ const rou1:Routes=[
     SuperAdminComponent,
     AdminComponent,
     UserComponent,
-    SearchResultComponent,
     RegisterComponent
   ],
   imports: [

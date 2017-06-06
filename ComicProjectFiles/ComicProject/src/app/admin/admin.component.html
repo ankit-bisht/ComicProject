@@ -7,8 +7,10 @@
 <button class="btn btn-info" (click)="getSeries()">
   Get Series
 </button>
-<button class="btn btn-success" (click)="logout()">LOGOUT</button> 
+<button class="btn btn-success" (click)="logout()">LOGOUT</button>
 <!--comic-->
+
+
 <div *ngIf="comic">
 <table style="width:100%">
   <tr>
@@ -62,8 +64,8 @@
     <div class="form-group">
       <input required type="text" name="name" [(ngModel)]="newSeason.name" #name="ngModel"  placeholder="New name" class="form-control">
       <input required type="text" name="description" [(ngModel)]="newSeason.description" #description="ngModel"  placeholder="New description" class="form-control">
-      <input required type="text" name="startson" [(ngModel)]="newSeason.startson" #startson="ngModel"  placeholder="New start date" class="form-control">
-      <input required type="text" name="endson" [(ngModel)]="newSeason.endson" #endson="ngModel"  placeholder="New end date" class="form-control">
+      <input required type="date" name="startson" [(ngModel)]="newSeason.startson" #startson="ngModel"  placeholder="New start date" class="form-control">
+      <input required type="date" name="endson" [(ngModel)]="newSeason.endson" #endson="ngModel"  placeholder="New end date" class="form-control">
     <button type="submit" [routerLink]="['/admin']" class="btn btn-success">Update Season</button>
 </div>
   </form>
@@ -94,7 +96,7 @@
     <div class="form-group">
       <input required type="text" name="name" [(ngModel)]="newSeason.name" #name="ngModel"  placeholder="New name" class="form-control">
       <input required type="text" name="description" [(ngModel)]="newSeason.description" #description="ngModel"  placeholder="New description" class="form-control">
-      <input required type="text" name="createdby" [(ngModel)]="newSeason.createdby" #createdby="ngModel"  placeholder="New start date" class="form-control">
+      <input required type="text" name="createdby" [(ngModel)]="newSeason.createdby" #createdby="ngModel"  placeholder="New createdby" class="form-control">
       <button type="submit" [routerLink]="['/admin']" class="btn btn-success">Update Series</button>
 </div>
   </form>

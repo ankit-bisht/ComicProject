@@ -2,6 +2,8 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+// var jwt = require('jsonwebtoken');
+// var expressJWT = require('express-jwt');
 
 // Connection to MongoDB
 mongoose.connect('mongodb://localhost:27017/ComicProjectDatabase');
@@ -16,8 +18,8 @@ app.set('env', process.env.NODE_ENV || 'production');
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(bodyParser.json());
-
-routes = require('./routes/index')
+// app.use(expressJWT({secret:'kellton'}).unless({path:['/api/v1/comic']}));
+routes = require('./routes/index');
 app.use('/api', routes);
 
 // Defining Port

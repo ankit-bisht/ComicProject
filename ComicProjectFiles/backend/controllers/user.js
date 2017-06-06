@@ -2,6 +2,8 @@ var User = require('../models/user');
 var Series = require('../models/series');
 var Season = require('../models/season');
 var Comics = require('../models/comics');
+var btoa = require('btoa');
+var atob = require('btoa');
 
 //USERS CRUD
 //user Post
@@ -9,7 +11,7 @@ exports.postUser = function (req, res) {
     if (req.body.usertype == 1 || req.body.usertype == 2 || req.body.usertype == 3){
       var user = new User({
           username: req.body.username,
-          password: enc_pass,
+          password: btoa(req.body.password),
           name: req.body.name,
           usertype: req.body.usertype
       });
@@ -25,6 +27,7 @@ User.findOne({username: user.username}, function(request, response){
             res.json(err);
         }
         else{
+          // var myToken = jwt.sign({secret: req.body.username},'kellton');
           res.json({
               success: true,
               body: response
@@ -37,17 +40,17 @@ User.findOne({username: user.username}, function(request, response){
     }else{
       res.json({
           success: false,
-          body: "there is undefined valuies"
+          body: "there is undefined value"
       })
     }
 };
 //Users get
 exports.getUser=function(req,res){
-
     User.find({}, function(err, response){
         if(err) {
             return res.json(req, res, err);
         }
+
 
         res.json(response);
     })
@@ -92,7 +95,7 @@ exports.verifyUser = function (req, res) {
     password1 = req.body.password;
     User.findOne({
         username: username1,
-        password: password1
+        password: atob(password1)
     }, function (err,user) {
         if (err) {
             res.json(err);
@@ -148,7 +151,7 @@ exports.updateUser = function(req, res) {
     }
 
     var name = req.body.name;
-    var password = req.body.password;
+    var password = btoa(req.body.password);
     var usertype = req.body.usertype;
     user.name = name;
     user.password = password;
