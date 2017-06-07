@@ -13,25 +13,41 @@ usertype:number;
     username:String,
     name:String,
     password:String,
-    usertype:Number
+    usertype:Number,
+    email:String,
+    code:String
   }={
     username:'',
     name:'',
     password:'',
-    usertype: 3
+    usertype: 3,
+    email:'',
+    code:''
   }
   flag=0;
+  text = "";
   constructor(public search: ConnectService, public router: Router) { }
 
   ngOnInit() {
+
   }
+  makeid()
+{
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < 5; i++ )
+        this.text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return this.text;
+}
 registerUser(){
-  
+  this.makeid();
+this.Newuser.code=this.text;
   this.search.PostUser(this.Newuser).subscribe(res => {
     if(res.name!="ValidationError")
     {
       alert("Registration Successful");
-       this.router.navigate(["/login"])
+       this.router.navigate(["/verify"])
     }
     else
     {

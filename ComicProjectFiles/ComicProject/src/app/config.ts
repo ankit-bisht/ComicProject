@@ -7,6 +7,7 @@ export class Configuration {
        UserSearchUrl: 'http://localhost:3003/api/v1/user/search',
        UserDeleteUrl: 'http://localhost:3003/api/v1/user/delete',
        VerifyUserUrl: 'http://localhost:3003/api/v1/user/verify',
+       VerifyCodeUrl: 'http://localhost:3003/api/v1/user/verification',
        UserUpdateUrl: 'http://localhost:3003/api/v1/user/update',
        UserCommentUrl: 'http://localhost:3003/api/v1/user/comment',
        GetCommentUrl: 'http://localhost:3003/api/v1/user/comment_id',

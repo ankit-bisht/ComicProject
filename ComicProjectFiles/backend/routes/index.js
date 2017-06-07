@@ -18,6 +18,8 @@ router.route('/v1/user/comment')
   .post(userController.postComment)
 router.route('/v1/user/comment_id/:comicID')
   .get(userController.getComment)
+router.route('/v1/user/verification/:code')
+  .put(userController.verification)
 
 //series apis
 router.route('/v1/series')

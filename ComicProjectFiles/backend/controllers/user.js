@@ -5,6 +5,17 @@ var Comics = require('../models/comics');
 var Comment = require('../models/comments');
 var btoa = require('btoa');
 var atob = require('btoa');
+const nodemailer = require('nodemailer');
+
+let transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // secure:true for port 465, secure:false for port 587
+    auth: {
+        user: 'platypusperry24@gmail.com',
+        pass: 'newu57zika'
+    }
+});
 
 //COMMENT
 exports.postComment = function (req, res) {
@@ -13,6 +24,7 @@ exports.postComment = function (req, res) {
         comment: req.body.comment,
         comicID: req.body.comicID
         });
+
 
     comment.save(function (err, response) {
         if(err) {
@@ -43,13 +55,35 @@ exports.getComment=function(req,res){
 //USERS CRUD
 //user Post
 exports.postUser = function (req, res) {
+
     if (req.body.usertype == 1 || req.body.usertype == 2 || req.body.usertype == 3){
       var user = new User({
           username: req.body.username,
           password: btoa(req.body.password),
           name: req.body.name,
-          usertype: req.body.usertype
+          usertype: req.body.usertype,
+          email:req.body.email,
+          verification: 0,
+          code: req.body.code
       });
+
+
+
+      let mailOptions = {
+          from: '"Comic World!" <platypusperry24@gmail.com>', // sender address
+          to: req.body.email, // list of receivers
+          subject: 'Comic World', // Subject line
+          text: 'Congratulations on your registration at localhost', // plain text body
+          html: '<b>Welcome to World of Comics! Enter this code to verify your account!  :</b>'+req.body.code // html body
+      };
+
+      transporter.sendMail(mailOptions, (error, info) => {
+  if (error) {
+      return console.log(error);
+  }
+  console.log('Message %s sent: %s', info.messageId, info.response);
+  });
+
 User.findOne({username: user.username}, function(request, response){
   if(response){
     res.json({
@@ -128,9 +162,11 @@ exports.verifyUser = function (req, res) {
 
     username1 = req.body.username;
     password1 = req.body.password;
+    verification = 1;
     User.findOne({
         username: username1,
-        password: atob(password1)
+        password: atob(password1),
+        verification: verification
     }, function (err,user) {
         if (err) {
             res.json(err);
@@ -214,6 +250,40 @@ else {
   })
 }
 
+exports.verification = function(req, res) {
+  var code = req.params.code;
+  User.findOne({
+    code: code
+  }, function(err, user) {
+    if (err) {
+      res.json({
+        status: true,
+        respData: {
+          data: "wrong code"
+        }
+      });
+    }
+    user.verification = 1;
+    user.save(function(err, response) {
+      if (err) {
+        res.json({
+          status: true,
+          respData: {
+            data: "wrong code"
+          }
+        });
+      }
+else {
+      res.json({
+        status: true,
+        respData: {
+          data: response
+        }
+      });
+    }
+  })
+  })
+}
 
 //SERIES CRUD
 //Series Post

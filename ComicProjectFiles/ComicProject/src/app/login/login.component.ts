@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
     this.auth.Postlogin(form1.value).subscribe(res => {
       this.valid =res.respData.data;
       this.valid2 = this.valid.usertype;
+      console.log(this.valid2);
       localStorage.setItem('username',res.respData.data.username);
       localStorage.setItem('usertype',res.respData.data.usertype);
         if (this.valid2 == "1") {

@@ -14,6 +14,7 @@ import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
 import { AuthService } from './auth.service';
 import { RegisterComponent } from './register/register.component';
+import { VerifyComponent } from './verify/verify.component';
 
 const rou1:Routes=[
      {path : 'login', component : LoginComponent},
@@ -22,7 +23,8 @@ const rou1:Routes=[
      {path : 'user', component : UserComponent,canActivate: [AuthService],data:[{usertype:'3'}]},
      {path : 'admin', component : AdminComponent,canActivate: [AuthService],data:[{usertype:'2'}]},
      {path : 'register', component : RegisterComponent},
-     {path : 'header', component : HeaderComponent}
+     {path : 'header', component : HeaderComponent},
+     {path : 'verify', component : VerifyComponent}
 ];
 
 @NgModule({
@@ -34,7 +36,8 @@ const rou1:Routes=[
     SuperAdminComponent,
     AdminComponent,
     UserComponent,
-    RegisterComponent
+    RegisterComponent,
+    VerifyComponent
   ],
   imports: [
     BrowserModule,

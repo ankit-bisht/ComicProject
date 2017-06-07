@@ -55,6 +55,11 @@ GetSearchSeason(SearchParam): Observable<any> {
       data => data.json()
     );
 }
+VerifyCode(code): Observable<any> {
+    return this.httpService.put(this.UrlObject.UrlObj.VerifyCodeUrl + '/' + code,code).map(
+          data => data.json()
+        );
+}
 DeleteSeries(id): Observable<any> {
     return this.httpService.delete(this.UrlObject.UrlObj.SeriesDeleteUrl + '/' + id).map(
       data => data.json()

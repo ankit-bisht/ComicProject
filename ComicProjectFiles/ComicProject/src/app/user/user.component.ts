@@ -15,6 +15,8 @@ comic;
 Id;
 comm;
 commentResult;
+allComments;
+flag=0;
 
 newComment:{
   username:String,
@@ -53,12 +55,15 @@ comment(Id,comm){
     this.newComment.comment=this.comm;
   this.search.PostComment(this.newComment).subscribe(res => {
     alert("comment added!")
+    console.log(this.newComment)
     })
 }
 getComment(Id){
   this.search.GetComment(Id).subscribe(res=>{
     this.commentResult=res[0];
+    this.flag=1;
     console.log(res[0].comment)
+    this.allComments=res;
     if(this.commentResult){
     }
     else{
