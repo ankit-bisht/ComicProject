@@ -56,10 +56,20 @@ GetSearchSeason(SearchParam): Observable<any> {
     );
 }
 VerifyCode(code): Observable<any> {
-    return this.httpService.put(this.UrlObject.UrlObj.VerifyCodeUrl + '/' + code,code).map(
+    return this.httpService.put(this.UrlObject.UrlObj.VerifyCodeUrl + '/' + code, code).map(
           data => data.json()
         );
 }
+SubscribeUser(username,series_id): Observable<any> {
+    return this.httpService.put(this.UrlObject.UrlObj.SubscribeUrl + '/' + series_id, username ).map(
+          data => data.json()
+        );
+}
+// subscribe(username): Observable<any> {
+//     return this.httpService.put(this.UrlObject.UrlObj.SubscribeUrl + '/' + username,username).map(
+//           data => data.json()
+//         );
+// }
 DeleteSeries(id): Observable<any> {
     return this.httpService.delete(this.UrlObject.UrlObj.SeriesDeleteUrl + '/' + id).map(
       data => data.json()

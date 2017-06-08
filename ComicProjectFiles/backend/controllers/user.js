@@ -18,6 +18,7 @@ let transporter = nodemailer.createTransport({
 });
 
 //COMMENT
+//comment Post
 exports.postComment = function (req, res) {
     var comment = new Comment({
         username: req.body.username,
@@ -64,7 +65,9 @@ exports.postUser = function (req, res) {
           usertype: req.body.usertype,
           email:req.body.email,
           verification: 0,
+          // subscription: 0,
           code: req.body.code
+
       });
 
 
@@ -78,41 +81,41 @@ exports.postUser = function (req, res) {
       };
 
       transporter.sendMail(mailOptions, (error, info) => {
-  if (error) {
-      return console.log(error);
-  }
-  console.log('Message %s sent: %s', info.messageId, info.response);
-  });
-
-User.findOne({username: user.username}, function(request, response){
-  if(response){
-    res.json({
-      data: "exist"
-    })
-  }
-  else{
-    user.save(function (err, response) {
-        if(err) {
-            res.json(err);
-        }
-        else{
-          // var myToken = jwt.sign({secret: req.body.username},'kellton');
-          res.json({
-              success: true,
-              body: response
-          })
-        }
+    if (error) {
+        return console.log(error);
+    }
+    console.log('Message %s sent: %s', info.messageId, info.response);
     });
-  }
-})
 
-    }else{
+    User.findOne({username: user.username}, function(request, response){
+    if(response){
       res.json({
-          success: false,
-          body: "there is undefined value"
+        data: "exist"
       })
     }
-};
+    else{
+      user.save(function (err, response) {
+          if(err) {
+              res.json(err);
+          }
+          else{
+            // var myToken = jwt.sign({secret: req.body.username},'kellton');
+            res.json({
+                success: true,
+                body: response
+            })
+          }
+      });
+    }
+  })
+
+      }else{
+        res.json({
+            success: false,
+            body: "there is undefined value"
+        })
+      }
+  };
 //Users get
 exports.getUser=function(req,res){
     User.find({}, function(err, response){
@@ -157,7 +160,7 @@ exports.searchUser = function (req, res) {
       });
     }
     })};
-//User Verify
+//User Login
 exports.verifyUser = function (req, res) {
 
     username1 = req.body.username;
@@ -238,7 +241,7 @@ exports.updateUser = function(req, res) {
           }
         });
       }
-else {
+      else {
       res.json({
         status: true,
         respData: {
@@ -249,7 +252,7 @@ else {
   })
   })
 }
-
+//User Verification
 exports.verification = function(req, res) {
   var code = req.params.code;
   User.findOne({
@@ -267,13 +270,13 @@ exports.verification = function(req, res) {
     user.save(function(err, response) {
       if (err) {
         res.json({
-          status: true,
+          status: false,
           respData: {
-            data: "wrong code"
+            data: err
           }
         });
       }
-else {
+      else {
       res.json({
         status: true,
         respData: {
@@ -284,6 +287,42 @@ else {
   })
   })
 }
+//User subscription
+// exports.subscribe = function(req, res) {
+//   var username = req.params.username;
+//   User.findOne({
+//     username: username
+//   }, function(err, user) {
+//     if (err) {
+//       res.json({
+//         status: false,
+//         respData: {
+//           data: err
+//         }
+//       });
+//     }
+//     user.subscription = 1;
+//     user.save(function(err, response) {
+//       if (err) {
+//         res.json({
+//           status: false,
+//           respData: {
+//             data: err
+//           }
+//         });
+//       }
+//       else {
+//       res.json({
+//         status: true,
+//         respData: {
+//           data: response
+//         }
+//       });
+//     }
+//   })
+//   })
+// }
+
 
 //SERIES CRUD
 //Series Post
@@ -400,7 +439,7 @@ exports.updateSeries = function(req, res) {
           }
         });
       }
-else {
+      else {
       res.json({
         status: true,
         respData: {
@@ -411,11 +450,46 @@ else {
   })
   })
 }
+//Series Subscribe
+exports.subscribeSeries = function(req, res) {
+  var series_id = req.params.series_id;
+  var username1 = req.body.username;
+  User.findOne({
+    username:username1
+  }, function(err, user)
+  {
+    email = user.email;
+  });
+  Series.findOne({
+      _id: series_id
+    }, function(err, series) {
+      series.subscribedusers.push(email);
+      series.save(function(err, response) {
+        if (err) {
+          res.json({
+            status: false,
+            respData: {
+              data: err
+            }
+          });
+        }
+        else {
+        res.json({
+          status: true,
+          respData: {
+            data: response
+          }
+        });
+      }
+    })
+    })
+    }
 
 //SEASON CURD
 //season post
 exports.postSeason = function (req, res) {
     var season = new Season({
+      series_id: req.body.series_id,
       name: req.body.name,
       description: req.body.description,
       startson: req.body.startson,
@@ -423,6 +497,31 @@ exports.postSeason = function (req, res) {
       createddate: req.body.createddate,
       updatedate: req.body.updatedate
     });
+    Series.findOne({
+      _id : season.series_id
+    }, function(err, series){
+      if(err){
+        return res.json("error");
+      }
+      else{
+        console.log(series.subscribedusers);
+        for(var x=0;x<series.subscribedusers.length;x++){
+        let mailOptions = {
+            from: '"Comic World!" <platypusperry24@gmail.com>', // sender address
+            to: series.subscribedusers[x], // list of receivers
+            subject: 'Comic World', // Subject line
+            text: 'New season have been added to your favorite Series!', // plain text body
+            html: '<b>A new season have been posted to your favorite series  :</b>'+req.body.name // html body
+        };
+        transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+          return console.log(error);
+      }
+      console.log('Message %s sent: %s', info.messageId, info.response);
+      });
+      }
+      }
+    })
 
     season.save(function (err, response) {
         if(err) {
@@ -530,7 +629,7 @@ exports.updateSeason = function(req, res) {
           }
         });
       }
-else {
+      else {
       res.json({
         status: true,
         respData: {
@@ -546,12 +645,40 @@ else {
 //comics post
 exports.postComic = function (req, res) {
     var comics = new Comics({
+      series_id: req.body.series_id,
+      season_id: req.body.season_id,
       name: req.body.name,
       image: req.body.image,
       story: req.body.story,
       createddate: req.body.createddate,
       updatedate: req.body.updatedate
     });
+
+    Series.findOne({
+      _id : season.series_id
+    }, function(err, series){
+      if(err){
+        return res.json("error");
+      }
+      else{
+        console.log(series.subscribedusers);
+        for(var x=0;x<series.subscribedusers.length;x++){
+        let mailOptions = {
+            from: '"Comic World!" <platypusperry24@gmail.com>', // sender address
+            to: series.subscribedusers[x], // list of receivers
+            subject: 'Comic World', // Subject line
+            text: 'New Comic have been added to your favorite Series!', // plain text body
+            html: '<b>A new comic have been posted to your favorite series  :</b>'+req.body.name // html body
+        };
+        transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+          return console.log(error);
+      }
+      console.log('Message %s sent: %s', info.messageId, info.response);
+      });
+      }
+      }
+    })
 
     comics.save(function (err, response) {
         if(err) {
@@ -655,7 +782,7 @@ exports.updateComic = function(req, res) {
           }
         });
       }
-else {
+      else {
       res.json({
         status: true,
         respData: {

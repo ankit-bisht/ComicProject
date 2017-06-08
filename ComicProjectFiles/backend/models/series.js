@@ -7,7 +7,8 @@ var SeriesSchema = new mongoose.Schema({
     description: {type: String, required: true},
     createdby: {type: String, required: true},
     createddate: {type: Date, default: Date.now},
-    updatedate: {type: Date, default: Date.now}
+    updatedate: {type: Date, default: Date.now},
+    subscribedusers: []
 
 });
 

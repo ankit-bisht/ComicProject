@@ -8,6 +8,7 @@ var UserSchema = new mongoose.Schema({
     name: {type: String, required: true},
     email:{type: String, required: true},
     code:{type: String, required:true},
+    // subscription:{type: String, required:true},
     verification:{type: Number, required: true},
     usertype: {type: Number, required: true},
     updateddate: {type: Date, default: Date.now}

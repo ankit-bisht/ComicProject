@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         }
 
       else {
-        alert("Username or Password is Incorrect!");
+        alert("Username or Password is Incorrect! or User not verified!");
       }
 
 

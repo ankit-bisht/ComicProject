@@ -20,6 +20,8 @@ router.route('/v1/user/comment_id/:comicID')
   .get(userController.getComment)
 router.route('/v1/user/verification/:code')
   .put(userController.verification)
+// router.route('/v1/user/subscription/:username')
+//   .put(userController.subscribe)
 
 //series apis
 router.route('/v1/series')
@@ -31,6 +33,8 @@ router.route('/v1/series/delete/:_id')
   .delete(userController.deleteSeries)
 router.route('/v1/series/update/:_id')
   .put(userController.updateSeries)
+router.route('/v1/user/subscribe/:series_id')
+  .put(userController.subscribeSeries)
 
 //season apis
 router.route('/v1/season')
