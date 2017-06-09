@@ -1,25 +1,65 @@
+<br>
 
-<input type="text" class="form-control input-sm" placeholder="Search" [(ngModel)]="searchitem1">
-<button class="btn btn-info" (click)="getComic()">
-  Get All Comics
-</button>
+<div class="container">
+  <div class="row">
+      <div class="col-sm-10">
+          <button class="btn btn-info" (click)="getComic()">
+            Get All Comics
+          </button>
+          <button class="btn btn-info" (click)="getSeason()">
+            Get All Seasons
+          </button>
+          <button class="btn btn-info" (click)="getSeries()">
+            Get All Series
+          </button>
+      <hr>
+      </div>
+    <div class="col-sm-1">
+      <button style="margin-left:40px; margin-bottom:40px"class="btn btn-success" (click)="logout()">LOGOUT</button>
+    </div>
+    <div class="col-sm-1">
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+    </div>
+        <div class="col-sm-6">
+            <input type="text" class="form-control input-sm" placeholder="Search" [(ngModel)]="searchitem1">
+        </div>
+    <div class="col-sm-3">
+    </div>
+  </div>
+</div>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-6" style="margin-left:85px">
+<span>
 <button class="btn btn-info" (click)="SearchComic()">
   Search Comic
 </button>
-<button class="btn btn-info" (click)="getSeries()">
-  Get All Series
-</button>
 <button class="btn btn-info" (click)="SearchSeries()">
-  Get Series
-</button>
-<button class="btn btn-info" (click)="getSeason()">
-  Get All Seasons
+  Search Series
 </button>
 <button class="btn btn-info" (click)="SearchSeason()">
-  Get Season
+  Search Season
 </button>
-<button class="btn btn-success" (click)="logout()">LOGOUT</button>
-
+</span>
+    </div>
+    <div class="col-sm-3">
+    </div>
+  </div>
+  <br>
+</div>
+<div class="row">
+<div class="col-sm-1">
+</div>
+<div class="col-sm-10">
 <div *ngIf="season">
 <table style="width:100%">
   <tr>
@@ -35,6 +75,7 @@
     <td>{{item.startson}}</td>
     <td>{{item.endson}}</td>
     <button class="btn btn-info" (click)="subscribe(item._id)">subscribe</button>
+    <br>
   </tr>
 </table>
 </div>
@@ -52,6 +93,7 @@
     <td>{{item.description}}</td>
     <td>{{item.createdby}}</td>
     <button class="btn btn-info" (click)="subscribe(item._id)">subscribe</button>
+    <br>
   </tr>
 </table>
 </div>
@@ -66,7 +108,7 @@
   </tr>
   <br>
   <tr *ngFor="let item of comic; let i = index">
-    <td><img src={{item.image}}></td>
+    <td><img style="width:200px; height:150px" src={{item.image}}></td>
     <td>{{item.name}}</td>
     <td>{{item.story}}</td>
     <button (click)="getComment(item._id)" class="btn btn-info">Show Comments</button>
@@ -74,7 +116,20 @@
     <button class="btn btn-info"  (click)="comment(item._id)">
         Comment
   </button>
+
+  <div *ngIf="flag">
+  <tr>
+    <td>username</td>
+    <td>comment</td>
   </tr>
+  <tr *ngFor="let item of allComments; let i = index">
+    <td>{{item.username}}</td>
+    <td>{{item.comment}}</td>
+  </tr>
+  <br>
+  </div>
+  </tr>
+
 </table>
 </div>
 
@@ -94,6 +149,7 @@
     <td>{{GetSearchSeason.endson}}</td>
     <td>{{GetSearchSeason.createddate}}</td>
     <button class="btn btn-info" (click)="subscribe(item.series_id)">subscribe</button>
+    <br>
   </tr>
 </table>
 </div>
@@ -112,6 +168,7 @@
     <td>{{GetSearchSeries.createdby}}</td>
     <td>{{GetSearchSeries.createddate}}</td>
     <button class="btn btn-info" (click)="subscribe(GetSearchSeries._id)">subscribe</button>
+    <br>
   </tr>
 </table>
 </div>
@@ -143,17 +200,12 @@
   <tr *ngFor="let item of allComments; let i = index">
     <td>{{item.username}}</td>
     <td>{{item.comment}}</td>
+    <br>
   </tr>
   </div>
 </table>
 </div>
-<div *ngIf="flag">
-<tr>
-  <td>username</td>
-  <td>comment</td>
-</tr>
-<tr *ngFor="let item of allComments; let i = index">
-  <td>{{item.username}}</td>
-  <td>{{item.comment}}</td>
-</tr>
+</div>
+<div class="col-sm-1">
+</div>
 </div>

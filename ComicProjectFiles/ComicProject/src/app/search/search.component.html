@@ -1,9 +1,23 @@
 <app-header></app-header>
 <br>
 <div class="container">
-  <div class="col-sm">
+  <div class="row">
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-6" style="padding-left: 109px;
+    margin-left: -40px;">
     <input type="text" class="form-control input-sm" placeholder="Search" [(ngModel)]="searchitem1">
-
+    </div>
+    <div class="col-sm-3">
+    </div>
+  </div>
+  </div>
+<br>
+<div class="container">
+<div class="row">
+  <div class="col-sm-3" >
+    </div>
+  <div class="col-sm-6" style="padding-left:109px">
   <button class="btn btn-info"  (click)="SearchComic()">
         <span class="glyphicon glyphicon-search"></span>SearchComic
   </button>
@@ -16,7 +30,11 @@
         <span class="glyphicon glyphicon-search"></span>SearchSeason
   </button>
 </div>
+<div class="col-sm-3">
+  </div>
 </div>
+</div>
+
 <div *ngIf="GetSearchComic">
 <table style="width:100%">
   <tr>

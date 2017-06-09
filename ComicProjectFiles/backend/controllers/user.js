@@ -65,7 +65,6 @@ exports.postUser = function (req, res) {
           usertype: req.body.usertype,
           email:req.body.email,
           verification: 0,
-          // subscription: 0,
           code: req.body.code
 
       });

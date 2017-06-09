@@ -1,45 +1,36 @@
-<h1> Welcome Super Admin! </h1>
-<button class="btn btn-success" (click)="logout()">LOGOUT</button>
-<button class="btn btn-info" (click)="GetUser()">
-Get Users
-</button>
-
-<div *ngIf="user">
-<table style="width:100%">
-  <tr>
-    <th>User Name</th>
-    <th>Password</th>
-    <th>Name</th>
-    <th>User Type</th>
-  </tr>
-  <br>
-  <tr *ngFor="let item of user; let i = index">
-    <td>{{item.username}}</td>
-    <td>{{item.password}}</td>
-    <td>{{item.name}}</td>
-    <td>{{item.usertype}}</td>
-    <button (click)="save(item._id)" type="submit" class="btn btn-info">Edit</button>
-    <button class="btn btn-info" (click)="DeleteUser(item.username)">delete</button>
-  </tr>
-</table>
-
-<div *ngIf="flag">
-  <form  (ngSubmit)="updateuser(dropdown.value)">
-    <div class="form-group">
-      <input required type="text" name="name" [(ngModel)]="Newuser.name" #name="ngModel"  placeholder="New name" class="form-control">
-      <input required type="password" name="password" [(ngModel)]="Newuser.password" #password="ngModel"  placeholder="New password" class="form-control">
-    </div>
-         <select #dropdown>
-  <option  value="2" name="usertype" ngDefaultControl>Admin</option>
-  <option  value="3" name="usertype" ngDefaultControl>User</option>
-</select>
-    <button type="submit" [routerLink]="['/super-admin']" class="btn btn-success">Update</button>
-  </form>
+<div class="row">
+<div class="col-sm-1">
 </div>
-<button class="btn btn-info" (click)="add()">
-Add User
+<div class="col-sm-4">
+<h1> Welcome Super Admin! </h1>
+</div>
+<div class="col-sm-5">
+</div>
+<div class="col-sm-2">
+<button class="btn btn-success" style="margin-top:20px;margin-left:80px" (click)="logout()">LOGOUT</button>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-1">
+</div>
+<div class="col-sm-1">
+<button class="btn btn-info" (click)="GetUser()">
+Get All Users
 </button>
-
+</div>
+<div class="col-sm-1">
+<button class="btn btn-info" (click)="add()">
+Add a new User
+</button>
+</div>
+<div class="col-sm-9">
+</div>
+</div>
+<br>
+<div class ="row">
+  <div class="col-sm-4">
+  </div>
+    <div class="col-sm-4">
 <div *ngIf="flag1">
   <form  (ngSubmit)="addUser(dropdown.value)">
     <div class="form-group">
@@ -51,6 +42,52 @@ Add User
   <option  value="2" name="usertype" ngDefaultControl>Admin</option>
   <option  value="3" name="usertype" ngDefaultControl>User</option>
 </select>
+
     <button type="submit" [routerLink]="['/super-admin']" class="btn btn-success">Add user</button>
+
   </form>
+</div>
+</div>
+</div>
+<br>
+<br>
+<div class="col-sm-1">
+</div>
+<div class="col-sm-10">
+  <div *ngIf="user">
+  <table style="width:100%">
+    <tr>
+      <th>User Name</th>
+      <th>Password</th>
+      <th>Name</th>
+      <th>User Type</th>
+    </tr>
+    <br>
+    <tr *ngFor="let item of user; let i = index">
+      <td>{{item.username}}</td>
+      <td>{{item.password}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.usertype}}</td>
+      <br>
+      <button (click)="save(item._id)" type="submit" class="btn btn-info">Edit</button>
+      <button class="btn btn-info" (click)="DeleteUser(item.username)">delete</button>
+    </tr>
+  </table>
+
+  <div *ngIf="flag">
+    <form  (ngSubmit)="updateuser(dropdown.value)">
+      <div class="form-group">
+        <input required type="text" name="name" [(ngModel)]="Newuser.name" #name="ngModel"  placeholder="New name" class="form-control">
+        <input required type="password" name="password" [(ngModel)]="Newuser.password" #password="ngModel"  placeholder="New password" class="form-control">
+      </div>
+           <select #dropdown>
+    <option  value="2" name="usertype" ngDefaultControl>Admin</option>
+    <option  value="3" name="usertype" ngDefaultControl>User</option>
+  </select>
+      <button type="submit" [routerLink]="['/super-admin']" class="btn btn-success">Update</button>
+    </form>
+  </div>
+
+</div>
+<div class="col-sm-1">
 </div>

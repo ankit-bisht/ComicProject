@@ -1,11 +1,26 @@
 <app-header></app-header>
 <br>
-<form  (ngSubmit)="registerUser()">
-  <div class="form-group">
-    <input required type="text" name="name" [(ngModel)]="Newuser.name" #name="ngModel"  placeholder="New name" class="form-control">
-    <input required type="password" name="password" [(ngModel)]="Newuser.password" #password="ngModel"  placeholder="Password" class="form-control">
-    <input required type="text" name="username" [(ngModel)]="Newuser.username" #username="ngModel"  placeholder="Username" class="form-control">
-    <input required type="email" name="email" [(ngModel)]="Newuser.email" #email="ngModel"  placeholder="Email" class="form-control">
+<div class ="row">
+  <div class="col-sm-4">
   </div>
-  <button type="submit" class="btn btn-success">Register</button>
-</form>
+    <div class="col-sm-4">
+        <form (ngSubmit)="registerUser()">
+
+                <input required type="text" name="name" [(ngModel)]="Newuser.name" #name="ngModel"  placeholder="New name" class="form-control">
+                <input required type="password" name="password" [(ngModel)]="Newuser.password" #password="ngModel"  placeholder="Password" class="form-control">
+                <input required type="text" name="username" [(ngModel)]="Newuser.username" #username="ngModel"  placeholder="Username" class="form-control">
+                <input required type="email" name="email" [(ngModel)]="Newuser.email" #email="ngModel"  placeholder="Email" class="form-control">
+                <div class="row">
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-2">
+                <button type="submit" class="btn btn-success">Register Me!</button>
+                </div>
+                <div class="col-sm-5">
+                </div>
+                </div>
+        </form>
+    </div>
+  <div class="col-sm-4">
+  </div>
+</div>

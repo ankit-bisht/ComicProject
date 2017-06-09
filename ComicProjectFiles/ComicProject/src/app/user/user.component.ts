@@ -118,7 +118,7 @@ subscribe(series_id){
   console.log(this.subscribedUser);
   this.user.username=  this.subscribedUser;
   this.search.SubscribeUser(this.user,series_id).subscribe(res => {
-    alert('Subscribed to this serires!');
+    alert('Subscribed to this series!');
   })
 }
 }
