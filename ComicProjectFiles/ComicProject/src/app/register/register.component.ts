@@ -15,15 +15,17 @@ usertype:number;
     password:String,
     usertype:Number,
     email:String,
-    code:String
+    code:String,
+    phoneNumber:String
   }={
     username:'',
     name:'',
     password:'',
     usertype: 3,
     email:'',
-    code:''
-  }
+    code:'',
+    phoneNumber:''
+  };
   flag=0;
   text = "";
   constructor(public search: ConnectService, public router: Router) { }

@@ -33,8 +33,16 @@ app.use(bodyParser.json());
 // app.use(expressJWT({secret:'kellton'}).unless({path:['/api/v1/comic']}));
 routes = require('./routes/index');
 app.use('/api', routes);
-
+//nexmo
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
+// const server = app.listen(3000);
 // Defining Port
+//twilio
+
+
+
+
 var port = process.env.PORT || 3003;
 
 // To Start node server

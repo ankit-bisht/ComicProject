@@ -10,6 +10,9 @@ export class AdminComponent implements OnInit {
   flag=0;
   flag1=0;
   flag2=0;
+  flag3=0;
+  flag4=0;
+  flag5=0;
   comic:any;
   season:any;
   series:any;
@@ -18,20 +21,26 @@ export class AdminComponent implements OnInit {
   seriesid;
   seasonid;
   newComic:{
+    seriesid:String,
+    seasonid:String,
     name:String,
-    story:String
-  }=
-  {
+    story:String,
+    image:String
+  }={
+    seriesid:'',
+    seasonid:'',
     name:'',
-    story:''
+    story:'',
+    image:''
   };
   newSeason:{
+    seriesid:String,
     name:String,
     description:String,
     startson:String,
     endson:String
-  }=
-  {
+  }={
+    seriesid:'',
     name:'',
     description:'',
     startson:'',
@@ -41,16 +50,80 @@ export class AdminComponent implements OnInit {
     name:String,
     description:String,
     createdby:String
-  }=
-  {
+  }={
     name:'',
     description:'',
     createdby:''
   }
+
+
+
+
   constructor(public router: Router, public search: ConnectService) { }
 
   ngOnInit() {
   }
+  flagComic(){
+    this.flag3=1;
+  }
+  addComic(){
+    this.search.PostComic(this.newComic).subscribe(res => {
+      if(res)
+      {
+        alert("comic has been added");
+         this.router.navigate(["/admin"])
+      }
+      else
+      {
+        alert("All the Fields are mendatory")
+      }
+      })
+  }
+
+
+
+
+  flagSeason(){
+    this.flag4=1;
+  }
+  addSeason(){
+    this.search.PostSeason(this.newSeason).subscribe(res => {
+      if(res)
+      {
+        alert("Season has been added");
+         this.router.navigate(["/admin"])
+      }
+      else
+      {
+        alert("All the Fields are mendatory")
+      }
+      })
+  }
+
+
+
+
+  flagSeries(){
+    this.flag5=1;
+  }
+  addSeries(){
+    this.search.PostSeries(this.newSeries).subscribe(res => {
+      if(res)
+      {
+        alert("Series has been added");
+         this.router.navigate(["/admin"])
+      }
+      else
+      {
+        alert("All the Fields are mendatory")
+      }
+      })
+  }
+
+
+
+
+
   saveComicId(id){
       this.flag=1;
       this.comicid=id;

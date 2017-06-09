@@ -6,6 +6,15 @@ var Comment = require('../models/comments');
 var btoa = require('btoa');
 var atob = require('btoa');
 const nodemailer = require('nodemailer');
+// var twilio = require('twilio');
+// const Nexmo = require('nexmo');
+
+// const nexmo = new Nexmo({
+//   apiKey: "1ba091eb",
+//   apiSecret: "27a168ba855f5f03"
+// });
+
+// var client = twilio('AC094e0127e4bfb4f8d0fed6661299d913', '5e96a7d2e0e50fc310fde6aa4327b004');
 
 let transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
@@ -65,11 +74,25 @@ exports.postUser = function (req, res) {
           usertype: req.body.usertype,
           email:req.body.email,
           verification: 0,
-          code: req.body.code
-
+          code: req.body.code,
+          number: req.body.phoneNumber
       });
+      // this.client.sendMessage({
+      //   to: ''+req.body.phoneNumber,
+      //   from: '+1 443-951-3215',
+      //   body: 'Ahoy from Twilio!'
+      // });
 
-
+      // nexmo.message.sendSms(
+      //   'Comic City', '91'+req.body.phoneNumber, 'Welcome to Comic City! Please user this code to verify your Number!'+req.body.code,
+      //     (err, responseData) => {
+      //       if (err) {
+      //         console.log(err);
+      //       } else {
+      //         console.dir(responseData);
+      //       }
+      //     }
+      //  );
 
       let mailOptions = {
           from: '"Comic World!" <platypusperry24@gmail.com>', // sender address
