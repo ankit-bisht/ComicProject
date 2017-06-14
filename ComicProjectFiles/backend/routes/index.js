@@ -22,6 +22,7 @@ router.route('/v1/user/verification/:code')
   .put(userController.verification)
 router.route('/v1/user/comicrequest')
   .post(userController.postRequest)
+  .get(userController.getRequest)
 // router.route('/v1/user/subscription/:username')
 //   .put(userController.subscribe)
 

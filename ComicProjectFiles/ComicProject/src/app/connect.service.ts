@@ -30,6 +30,11 @@ GetSeries(): Observable<any> {
       data => data.json()
     );
 }
+getRequest(): Observable<any> {
+    return this.httpService.get(this.UrlObject.UrlObj.UserRequestUrl).map(
+      data => data.json()
+    );
+}
 GetComment(a): Observable<any> {
     return this.httpService.get(this.UrlObject.UrlObj.GetCommentUrl+'/'+a).map(
       data => data.json()
@@ -111,6 +116,13 @@ PostComment(a): Observable<any> {
       data => data.json()
     );
 }
+
+PostRequest(a): Observable<any> {
+    return this.httpService.post(this.UrlObject.UrlObj.UserRequestUrl,a).map(
+      data => data.json()
+    );
+}
+
 UpdateUser(a,newvalue ): Observable<any> {
    return this.httpService.put(this.UrlObject.UrlObj.UserUpdateUrl+'/'+ a, newvalue).map(
      data => data.json()

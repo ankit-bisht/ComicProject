@@ -1,5 +1,14 @@
 <br>
 <div class="row">
+  <div class="col-sm-1">
+  </div><div class="col-sm-11">
+<button class="btn btn-info" (click)="getallrequests()">
+      Get all Requests
+    </button>
+    </div>
+</div>
+<br>
+<div class="row">
 <div class="col-sm-7">
 </div>
 <div class="col-sm-3" >
@@ -39,6 +48,28 @@
 </div>
 </div>
 <br>
+
+
+
+<div *ngIf="comicreq">
+  <table style="width:100%">
+    <tr>
+      <th>Username</th>
+      <th>Comic Requested</th>
+      <th>Request Status</th>
+      <th>Request Date</th>
+    </tr>
+    <br>
+    <tr *ngFor="let item of comicreq; let i = index">
+      <td>{{item.username}}</td>
+      <td>{{item.comicname}}</td>
+      <td>{{item.requeststatus}}</td>
+      <td>{{item.requestdate}}</td>
+    </tr>
+  </table>
+  </div>
+
+
 
 
 

@@ -41,6 +41,16 @@ exports.postRequest = function (req, res) {
     });
 };
 
+//Comicrequests get
+exports.getRequest=function(req,res){
+    Comicrequests.find({}, function(err, response){
+        if(err) {
+            return res.json(req, res, err);
+        }
+
+        res.json(response);
+    })
+}
 
 
 //COMMENT

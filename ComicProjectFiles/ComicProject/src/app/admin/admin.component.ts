@@ -13,6 +13,7 @@ export class AdminComponent implements OnInit {
   flag3=0;
   flag4=0;
   flag5=0;
+  reqflag=0;
   comic:any;
   season:any;
   series:any;
@@ -20,6 +21,7 @@ export class AdminComponent implements OnInit {
   comicid;
   seriesid;
   seasonid;
+  comicreq;
   newComic:{
     seriesid:String,
     seasonid:String,
@@ -81,6 +83,12 @@ export class AdminComponent implements OnInit {
   }
 
 
+getallrequests(){
+  this.reqflag=1;
+    this.search.getRequest().subscribe(res=>{
+      this.comicreq=res;
+    })
+  }
 
 
   flagSeason(){

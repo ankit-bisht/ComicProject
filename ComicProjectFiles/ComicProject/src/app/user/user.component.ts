@@ -37,7 +37,17 @@ user:{
   username: String
 }={
   username:''
-}
+};
+comicreq:{
+  username:String,
+  comicname:String,
+  requeststatus: number
+}={
+  username:'',
+  comicname:'',
+  requeststatus:0
+};
+
   constructor(public search: ConnectService, public router: Router) {
   }
   ngOnInit() {
@@ -64,7 +74,12 @@ getSeries(){
 comicRequest(){
   this.request=1;
 }
-
+addRequest(){
+  this.comicreq.username=localStorage.getItem('username');
+  this.search.PostRequest(this.comicreq).subscribe(res => {
+    alert("Your fav comic will be added soon!");
+    })
+}
 
 
 SearchComic(){
