@@ -36,7 +36,10 @@ Add a new User
     <div class="form-group">
       <input required type="text" name="username" [(ngModel)]="Newuser.username" #username="ngModel" placeholder="Type Username" class="form-control">
       <input required type="text" name="name" [(ngModel)]="Newuser.name" #name="ngModel"  placeholder="Type Name" class="form-control">
+
       <input required type="password" name="password" [(ngModel)]="Newuser.password" #password="ngModel"  placeholder="Type password" class="form-control">
+      <input required type="email" name="email" [(ngModel)]="Newuser.email" #email="ngModel"  placeholder="Type Email" class="form-control">
+      <input required type="number" name="phoneNumber" [(ngModel)]="Newuser.phoneNumber" #phoneNumber="ngModel"  placeholder="Type Phone Number" class="form-control">
     </div>
          <select #dropdown>
   <option  value="2" name="usertype" ngDefaultControl>Admin</option>
@@ -61,6 +64,11 @@ Add a new User
       <th>Password</th>
       <th>Name</th>
       <th>User Type</th>
+      <th>Phone Number</th>
+      <th>Email</th>
+      <th>Verification status </th>
+      <th>Verification code</th>
+      <th>Last Update Date</th>
     </tr>
     <br>
     <tr *ngFor="let item of user; let i = index">
@@ -68,6 +76,11 @@ Add a new User
       <td>{{item.password}}</td>
       <td>{{item.name}}</td>
       <td>{{item.usertype}}</td>
+      <td>{{item.number}}</td>
+      <td>{{item.email}}</td>
+      <td>{{item.verification}}</td>
+      <td>{{item.code}}</td>
+      <td>{{item.updateddate}}</td>
       <br>
       <button (click)="save(item._id)" type="submit" class="btn btn-info">Edit</button>
       <button class="btn btn-info" (click)="DeleteUser(item.username)">delete</button>
@@ -79,6 +92,9 @@ Add a new User
       <div class="form-group">
         <input required type="text" name="name" [(ngModel)]="Newuser.name" #name="ngModel"  placeholder="New name" class="form-control">
         <input required type="password" name="password" [(ngModel)]="Newuser.password" #password="ngModel"  placeholder="New password" class="form-control">
+        <input required type="email" name="email" [(ngModel)]="Newuser.email" #email="ngModel"  placeholder="New email" class="form-control">
+        <input required type="number" name="phoneNumber" [(ngModel)]="Newuser.phoneNumber" #phoneNumber="ngModel"  placeholder="New phoneNumber" class="form-control">
+        <input required type="number" name="verification" [(ngModel)]="Newuser.verification" #verification="ngModel"  placeholder="New verification status 0 or 1" class="form-control">
       </div>
            <select #dropdown>
     <option  value="2" name="usertype" ngDefaultControl>Admin</option>

@@ -132,14 +132,22 @@
   <table style="width:100%">
     <tr>
       <th>Image</th>
+      <th>Series Id</th>
+      <th>Season Id</th>
       <th>Comic Name</th>
       <th>Story</th>
+      <th>Created on</th>
+      <th>Last updated on</th>
     </tr>
     <br>
     <tr *ngFor="let item of comic; let i = index">
       <td><img style="width:200px; height:150px" src={{item.image}}></td>
+      <td>{{item.series_id}}</td>
+      <td>{{item.season_id}}</td>
       <td>{{item.name}}</td>
       <td>{{item.story}}</td>
+      <td>{{item.createddate}}</td>
+      <td>{{item.updateddate}}</td>
       <button (click)="saveComicId(item._id)" type="Edit" class="btn btn-info">Edit</button>
       <button class="btn btn-info" (click)="deleteComic(item._id)">delete</button>
     </tr>
@@ -160,17 +168,23 @@
   <div *ngIf="season">
   <table style="width:100%">
     <tr>
+      <th>Series Id</th>
       <th>Name</th>
       <th>description</th>
       <th>Starts on</th>
       <th>End on</th>
+      <th>Created on</th>
+      <th>Last Updated on</th>
     </tr>
     <br>
     <tr *ngFor="let item of season; let i = index">
+      <td>{{item.series_id}}</td>
       <td>{{item.name}}</td>
       <td>{{item.description}}</td>
       <td>{{item.startson}}</td>
       <td>{{item.endson}}</td>
+      <td>{{item.createddate}}</td>
+      <td>{{item.updateddate}}</td>
       <button (click)="saveSeasonId(item._id)" type="submit" class="btn btn-info">Edit</button>
       <button class="btn btn-info" (click)="deleteSeason(item._id)">delete</button>
     </tr>
@@ -197,12 +211,18 @@
       <th>Name</th>
       <th>description</th>
       <th>Created By</th>
+      <th>Created on</th>
+      <th>Last update date</th>
+      <th>Subscribed Users</th>
     </tr>
     <br>
     <tr *ngFor="let item of series; let i = index">
       <td>{{item.name}}</td>
       <td>{{item.description}}</td>
       <td>{{item.createdby}}</td>
+      <td>{{item.createddate}}</td>
+      <td>{{item.updatedate}}</td>
+      <th>{{item.subscribedusers}}</th>
       <button (click)="saveSeriesId(item._id)" type="submit" class="btn btn-info">Edit</button>
       <button class="btn btn-info" (click)="deleteSeries(item._id)">delete</button>
     </tr>

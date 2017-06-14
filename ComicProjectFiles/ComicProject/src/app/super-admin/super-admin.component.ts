@@ -16,13 +16,19 @@ export class SuperAdminComponent implements OnInit {
     name:String,
     password:String,
     usertype:String,
-    username:String
+    username:String,
+    email:String,
+    phoneNumber:String,
+    code:String
   }={
     name:'',
     password:'',
     usertype:'',
-    username:''
-  }
+    username:'',
+    email:'',
+    phoneNumber:'',
+    code:'Super_Admin'
+  };
   constructor(public search: ConnectService, public router: Router) { }
 
   ngOnInit() {
@@ -45,13 +51,19 @@ GetUser(){
 
 DeleteUser(data)
 {
-   this.search.DeleteUser(data).subscribe(res => {
-    alert("Deleted" + data);
-    this.GetUser();
-  }
-    ,error => {
-      alert(error);
-    });
+  var sure = confirm("Are you sure to delete this user?");
+    if (sure == true) {
+      this.search.DeleteUser(data).subscribe(res => {
+       alert("Deleted" + data);
+       this.GetUser();
+     }
+       ,error => {
+         alert(error);
+       });
+    } else {
+        alert("User was not deleted!");
+    }
+
 }
 save(id){
   this.userid =id;

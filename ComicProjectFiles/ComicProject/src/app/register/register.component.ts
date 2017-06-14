@@ -43,13 +43,14 @@ usertype:number;
     return this.text;
 }
 registerUser(){
+  window.open("http://localhost:4200/verify", "", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
   this.makeid();
 this.Newuser.code=this.text;
   this.search.PostUser(this.Newuser).subscribe(res => {
     if(res.name!="ValidationError")
     {
-      alert("Registration Successful");
-       this.router.navigate(["/verify"])
+      // alert("Registration Successful");
+       this.router.navigate(["/login"])
     }
     else
     {

@@ -16,12 +16,18 @@ VerifyCode;
   }
 verification(){
   this.search.VerifyCode(this.verifyitem).subscribe(res => {
-      if(res){
-        alert('user has been verified!');
-        this.router.navigate(["/login"]);
+      if(res.data!="wrong code"){
+        if(res.data.username){
+          alert("You already belong to the comic city!")
+        }
+        else{
+          alert('Welcome to the comic city!');
+          this.router.navigate(["/login"]);
+        }
+
       }
       else{
-        alert('Wrong Code. Try again!');
+        alert('Are you sure your code is right?');
       }
     })
 }

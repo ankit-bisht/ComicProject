@@ -12,7 +12,7 @@ GetSearchComic;
 GetSearchSeries;
 GetSearchSeason;
 searchitem1;
-  constructor(public search: ConnectService) {
+  constructor(public search: ConnectService, public router: Router) {
   }
   ngOnInit() {
   }
@@ -22,7 +22,13 @@ SearchComic(){
       if(this.GetSearchComic){
       }
       else{
-        alert('Cannot find! Try something else.');
+
+        if (confirm("Do you want to request this comic?") == true) {
+             this.router.navigate(["/user"])
+        } else {
+                 this.router.navigate(["/search"])
+              }
+
       }
     })
 }

@@ -2,19 +2,11 @@ var User = require('../models/user');
 var Series = require('../models/series');
 var Season = require('../models/season');
 var Comics = require('../models/comics');
+var Comicrequests = require('../models/comicrequests');
 var Comment = require('../models/comments');
 var btoa = require('btoa');
 var atob = require('btoa');
 const nodemailer = require('nodemailer');
-// var twilio = require('twilio');
-// const Nexmo = require('nexmo');
-
-// const nexmo = new Nexmo({
-//   apiKey: "1ba091eb",
-//   apiSecret: "27a168ba855f5f03"
-// });
-
-// var client = twilio('AC094e0127e4bfb4f8d0fed6661299d913', '5e96a7d2e0e50fc310fde6aa4327b004');
 
 let transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
@@ -25,6 +17,31 @@ let transporter = nodemailer.createTransport({
         pass: 'newu57zika'
     }
 });
+
+//COMICREQUESTS
+//Comicrequests post
+exports.postRequest = function (req, res) {
+    var comicRequest = new Comicrequests({
+        username: req.body.username,
+        comicname: req.body.comicname,
+        requeststatus: 0
+        });
+
+
+    comicRequest.save(function (err, response) {
+        if(err) {
+            return (err);
+        }
+
+        res.json({
+            success: true,
+            body: response
+        })
+
+    });
+};
+
+
 
 //COMMENT
 //comment Post
@@ -77,29 +94,13 @@ exports.postUser = function (req, res) {
           code: req.body.code,
           number: req.body.phoneNumber
       });
-      // this.client.sendMessage({
-      //   to: ''+req.body.phoneNumber,
-      //   from: '+1 443-951-3215',
-      //   body: 'Ahoy from Twilio!'
-      // });
-
-      // nexmo.message.sendSms(
-      //   'Comic City', '91'+req.body.phoneNumber, 'Welcome to Comic City! Please user this code to verify your Number!'+req.body.code,
-      //     (err, responseData) => {
-      //       if (err) {
-      //         console.log(err);
-      //       } else {
-      //         console.dir(responseData);
-      //       }
-      //     }
-      //  );
 
       let mailOptions = {
-          from: '"Comic World!" <platypusperry24@gmail.com>', // sender address
-          to: req.body.email, // list of receivers
-          subject: 'Comic World', // Subject line
-          text: 'Congratulations on your registration at localhost', // plain text body
-          html: '<b>Welcome to World of Comics! Enter this code to verify your account!  :</b>'+req.body.code // html body
+          from: '"Comic World!" <platypusperry24@gmail.com>',
+          to: req.body.email,
+          subject: 'Comic World',
+          text: 'Congratulations on your registration at localhost',
+          html: '<b>Welcome to World of Comics! Enter this code to verify your account!  :</b>'+req.body.code
       };
 
       transporter.sendMail(mailOptions, (error, info) => {
@@ -249,9 +250,16 @@ exports.updateUser = function(req, res) {
     var name = req.body.name;
     var password = btoa(req.body.password);
     var usertype = req.body.usertype;
+    var phoneNumber = req.body.phoneNumber;
+    var verification = req.body.verification
+
+    var email = req.body.email;
     user.name = name;
     user.password = password;
     user.usertype = usertype;
+    user.phoneNumber = phoneNumber;
+    user.email = email;
+    user.verification = verification;
     user.updateddate = new Date();
 
     user.save(function(err, response) {
@@ -277,74 +285,33 @@ exports.updateUser = function(req, res) {
 //User Verification
 exports.verification = function(req, res) {
   var code = req.params.code;
+
   User.findOne({
     code: code
   }, function(err, user) {
-    if (err) {
+    if (!user) {
       res.json({
-        status: true,
-        respData: {
           data: "wrong code"
-        }
       });
     }
-    user.verification = 1;
-    user.save(function(err, response) {
-      if (err) {
-        res.json({
-          status: false,
-          respData: {
-            data: err
-          }
-        });
-      }
-      else {
-      res.json({
-        status: true,
-        respData: {
-          data: response
-        }
-      });
-    }
-  })
-  })
-}
-//User subscription
-// exports.subscribe = function(req, res) {
-//   var username = req.params.username;
-//   User.findOne({
-//     username: username
-//   }, function(err, user) {
-//     if (err) {
-//       res.json({
-//         status: false,
-//         respData: {
-//           data: err
-//         }
-//       });
-//     }
-//     user.subscription = 1;
-//     user.save(function(err, response) {
-//       if (err) {
-//         res.json({
-//           status: false,
-//           respData: {
-//             data: err
-//           }
-//         });
-//       }
-//       else {
-//       res.json({
-//         status: true,
-//         respData: {
-//           data: response
-//         }
-//       });
-//     }
-//   })
-//   })
-// }
+    else{
+        user.verification = 1;
 
+        user.save(function(err, response) {
+          if (err) {
+            res.json({
+                data: err
+            });
+          }
+          else {
+          res.json({
+              data: response
+          });
+          }
+        })
+       }
+    })
+}
 
 //SERIES CRUD
 //Series Post
@@ -381,7 +348,6 @@ exports.getSeries=function(req,res){
 }
 //Series Search
 exports.searchSeries = function (req, res) {
-  console.log(req.params.reg);
   var regex = RegExp(req.params.reg);
   Series.find({
     name: regex
@@ -677,7 +643,7 @@ exports.postComic = function (req, res) {
     });
 
     Series.findOne({
-      _id : season.series_id
+      _id : req.body.series_id
     }, function(err, series){
       if(err){
         return res.json("error");

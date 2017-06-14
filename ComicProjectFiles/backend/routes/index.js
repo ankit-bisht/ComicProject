@@ -20,6 +20,8 @@ router.route('/v1/user/comment_id/:comicID')
   .get(userController.getComment)
 router.route('/v1/user/verification/:code')
   .put(userController.verification)
+router.route('/v1/user/comicrequest')
+  .post(userController.postRequest)
 // router.route('/v1/user/subscription/:username')
 //   .put(userController.subscribe)
 

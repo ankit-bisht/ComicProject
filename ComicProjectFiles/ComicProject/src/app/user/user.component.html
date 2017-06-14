@@ -1,4 +1,9 @@
 <br>
+<div>
+  <button class="btn btn-info" (click)="getSeries()">
+    Request Comic
+  </button>
+</div>
 
 <div class="container">
   <div class="row">
@@ -208,4 +213,28 @@
 </div>
 <div class="col-sm-1">
 </div>
+</div>
+
+
+
+
+
+<div *ngIf="request">
+  <form  (ngSubmit)="addUser(dropdown.value)">
+    <div class="form-group">
+      <input required type="text" name="username" [(ngModel)]="Newuser.username" #username="ngModel" placeholder="Type Username" class="form-control">
+      <input required type="text" name="name" [(ngModel)]="Newuser.name" #name="ngModel"  placeholder="Type Name" class="form-control">
+
+      <input required type="password" name="password" [(ngModel)]="Newuser.password" #password="ngModel"  placeholder="Type password" class="form-control">
+      <input required type="email" name="email" [(ngModel)]="Newuser.email" #email="ngModel"  placeholder="Type Email" class="form-control">
+      <input required type="number" name="phoneNumber" [(ngModel)]="Newuser.phoneNumber" #phoneNumber="ngModel"  placeholder="Type Phone Number" class="form-control">
+    </div>
+         <select #dropdown>
+  <option  value="2" name="usertype" ngDefaultControl>Admin</option>
+  <option  value="3" name="usertype" ngDefaultControl>User</option>
+</select>
+
+    <button type="submit" [routerLink]="['/super-admin']" class="btn btn-success">Add user</button>
+
+  </form>
 </div>

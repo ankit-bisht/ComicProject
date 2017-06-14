@@ -22,6 +22,7 @@ comm;
 commentResult;
 allComments;
 flag=0;
+request=0;
 
 newComment:{
   username:String,
@@ -60,6 +61,12 @@ getSeries(){
     this.series=res;
   })
 }
+comicRequest(){
+  this.request=1;
+}
+
+
+
 SearchComic(){
   this.search.GetSearchComic(this.searchitem1).subscribe(res => {
       this.GetSearchComic = res.respData.data[0];

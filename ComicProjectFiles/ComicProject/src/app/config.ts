@@ -10,6 +10,7 @@ export class Configuration {
        VerifyCodeUrl: 'http://localhost:3003/api/v1/user/verification',
        UserUpdateUrl: 'http://localhost:3003/api/v1/user/update',
        UserCommentUrl: 'http://localhost:3003/api/v1/user/comment',
+       UserRequestUrl: 'http://localhost:3003/api/v1/user/comicrequest',
        SubscribeUrl: 'http://localhost:3003/api/v1/user/subscribe',
        GetCommentUrl: 'http://localhost:3003/api/v1/user/comment_id',
        SeriesUrl: 'http://localhost:3003/api/v1/series',

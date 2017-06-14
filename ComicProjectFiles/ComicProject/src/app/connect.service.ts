@@ -65,11 +65,6 @@ SubscribeUser(username,series_id): Observable<any> {
           data => data.json()
         );
 }
-// subscribe(username): Observable<any> {
-//     return this.httpService.put(this.UrlObject.UrlObj.SubscribeUrl + '/' + username,username).map(
-//           data => data.json()
-//         );
-// }
 DeleteSeries(id): Observable<any> {
     return this.httpService.delete(this.UrlObject.UrlObj.SeriesDeleteUrl + '/' + id).map(
       data => data.json()
