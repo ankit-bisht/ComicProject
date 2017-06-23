@@ -8,139 +8,139 @@ import { CanActivate, Router } from '@angular/router';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-GetSearchComic;
-GetSearchSeries;
-GetSearchSeason;
-searchitem1;
-item;
-comic;
-season;
-series;
-Id;
-subscribedUser;
-comm;
-commentResult;
-allComments;
-flag=0;
-request=0;
+  GetSearchComic;
+  GetSearchSeries;
+  GetSearchSeason;
+  searchitem1;
+  item;
+  comic;
+  season;
+  series;
+  Id;
+  subscribedUser;
+  comm;
+  commentResult;
+  allComments;
+  flag = 0;
+  request = 0;
 
-newComment:{
-  username:String,
-  comment:String,
-  comicID:String
-}={
-  username:localStorage.getItem('username'),
-  comment:'',
-  comicID:'exampleid'
-}
-user:{
-  username: String
-}={
-  username:''
-};
-comicreq:{
-  username:String,
-  comicname:String,
-  requeststatus: number
-}={
-  username:'',
-  comicname:'',
-  requeststatus:0
-};
+  newComment: {
+    username: String,
+    comment: String,
+    comicID: String
+  } = {
+    username: localStorage.getItem('username'),
+    comment: '',
+    comicID: 'exampleid'
+  }
+  user: {
+    username: String
+  } = {
+    username: ''
+  };
+  comicreq: {
+    username: String,
+    comicname: String,
+    requeststatus: number
+  } = {
+    username: '',
+    comicname: '',
+    requeststatus: 0
+  };
 
   constructor(public search: ConnectService, public router: Router) {
   }
   ngOnInit() {
   }
-logout() {
+  logout() {
     localStorage.clear()
     this.router.navigate(['/login'])
   }
-getComic(){
-    this.search.GetComic().subscribe(res=>{
-      this.comic=res;
+  getComic() {
+    this.search.GetComic().subscribe(res => {
+      this.comic = res;
     })
-}
-getSeason(){
-  this.search.GetSeason().subscribe(res=>{
-    this.season=res;
-  })
-}
-getSeries(){
-  this.search.GetSeries().subscribe(res=>{
-    this.series=res;
-  })
-}
-comicRequest(){
-  this.request=1;
-}
-addRequest(){
-  this.comicreq.username=localStorage.getItem('username');
-  this.search.PostRequest(this.comicreq).subscribe(res => {
-    alert("Your fav comic will be added soon!");
+  }
+  getSeason() {
+    this.search.GetSeason().subscribe(res => {
+      this.season = res;
     })
-}
+  }
+  getSeries() {
+    this.search.GetSeries().subscribe(res => {
+      this.series = res;
+    })
+  }
+  comicRequest() {
+    this.request = 1;
+  }
+  addRequest() {
+    this.comicreq.username = localStorage.getItem('username');
+    this.search.PostRequest(this.comicreq).subscribe(res => {
+      alert("Your fav comic will be added soon!");
+    })
+  }
 
 
-SearchComic(){
-  this.search.GetSearchComic(this.searchitem1).subscribe(res => {
+  SearchComic() {
+    this.search.GetSearchComic(this.searchitem1).subscribe(res => {
       this.GetSearchComic = res.respData.data[0];
-      if(this.GetSearchComic){
+      if (this.GetSearchComic) {
       }
-      else{
+      else {
         alert('Cannot find! Try something else.');
       }
     })
-}
+  }
 
-SearchSeries(){
-  this.search.GetSearchSeries(this.searchitem1).subscribe(res => {
+  SearchSeries() {
+    this.search.GetSearchSeries(this.searchitem1).subscribe(res => {
       this.GetSearchSeries = res.respData.data[0];
-      if(this.GetSearchSeries){
+      if (this.GetSearchSeries) {
       }
-      else{
+      else {
         alert('Cannot find! Try something else.');
       }
     })
-}
+  }
 
-SearchSeason(){
-  this.search.GetSearchSeason(this.searchitem1).subscribe(res => {
+  SearchSeason() {
+    this.search.GetSearchSeason(this.searchitem1).subscribe(res => {
       this.GetSearchSeason = res.respData.data[0];
-      if(this.GetSearchSeason){
+      if (this.GetSearchSeason) {
       }
-      else{
+      else {
         alert('Cannot find! Try something else.');
       }
     })
-}
-comment(Id,comm){
-    this.newComment.comicID=Id;
-    this.newComment.comment=this.comm;
-  this.search.PostComment(this.newComment).subscribe(res => {
-    alert("comment added!")
-    console.log(this.newComment)
+  }
+  comment(Id, comm) {
+    this.newComment.comicID = Id;
+    this.newComment.comment = this.comm;
+    this.search.PostComment(this.newComment).subscribe(res => {
+      alert("comment added!")
+      console.log(this.newComment)
     })
-}
-getComment(Id){
-  this.search.GetComment(Id).subscribe(res=>{
-    this.commentResult=res[0];
-    this.flag=1;
-    console.log(res[0].comment)
-    this.allComments=res;
-    if(this.commentResult){
-    }
-    else{
-      alert('No comments on this Comic!');
-    }
-  })
-}
-subscribe(series_id){
-  this.subscribedUser=localStorage.getItem('username');
-  console.log(this.subscribedUser);
-  this.user.username=  this.subscribedUser;
-  this.search.SubscribeUser(this.user,series_id).subscribe(res => {
-    alert('Subscribed to this series!');
-  })
-}
+  }
+  getComment(Id) {
+    this.search.GetComment(Id).subscribe(res => {
+      this.commentResult = res[0];
+      this.flag = 1;
+      console.log(res[0].comment)
+      this.allComments = res;
+      if (this.commentResult) {
+      }
+      else {
+        alert('No comments on this Comic!');
+      }
+    })
+  }
+  subscribe(series_id) {
+    this.subscribedUser = localStorage.getItem('username');
+    console.log(this.subscribedUser);
+    this.user.username = this.subscribedUser;
+    this.search.SubscribeUser(this.user, series_id).subscribe(res => {
+      alert('Subscribed to this series!');
+    })
+  }
 }

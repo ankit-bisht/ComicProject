@@ -1,17 +1,18 @@
 <br>
 <div class="row">
   <div class="col-sm-1">
-  </div><div class="col-sm-11">
-<button class="btn btn-info" (click)="getallrequests()">
+  </div>
+  <div class="col-sm-11">
+    <button class="btn btn-info" (click)="getallrequests()">
       Get all Requests
     </button>
-    </div>
+  </div>
 </div>
-<br>
+<hr>
 <div class="row">
-<div class="col-sm-7">
-</div>
-<div class="col-sm-3" >
+  <div class="col-sm-7">
+  </div>
+  <div class="col-sm-3">
 
     <button class="btn btn-info" (click)="flagComic()">
       Add Comic
@@ -22,11 +23,11 @@
     <button class="btn btn-info" (click)="flagSeries()">
       Add Series
     </button>
-</div>
+  </div>
 
-<div class="col-sm-2">
-  <button class="btn btn-success" style="margin-left:75px" (click)="logout()">LOGOUT</button>
-</div>
+  <div class="col-sm-2">
+    <button class="btn btn-success" style="margin-left:75px" (click)="logout()">LOGOUT</button>
+  </div>
 </div>
 <br>
 <br>
@@ -34,18 +35,18 @@
   <div class="col-sm-4">
   </div>
   <div class="col-sm-4">
-<button class="btn btn-info" (click)="getComic()">
+    <button class="btn btn-info" (click)="getComic()">
   Get comics
 </button>
-<button class="btn btn-info" (click)="getSeason()">
+    <button class="btn btn-info" (click)="getSeason()">
   Get Seasons
 </button>
-<button class="btn btn-info" (click)="getSeries()">
+    <button class="btn btn-info" (click)="getSeries()">
   Get Series
 </button>
   </div>
   <div class="col-sm-4">
-</div>
+  </div>
 </div>
 <br>
 
@@ -67,7 +68,7 @@
       <td>{{item.requestdate}}</td>
     </tr>
   </table>
-  </div>
+</div>
 
 
 
@@ -76,66 +77,75 @@
 
 
 <div class="row">
-<div class="col-sm-4">
-</div>
-<div class="col-sm-4">
-  <div *ngIf="flag3">
-    <form  (ngSubmit)="addComic()">
-      <div class="form-group">
-        <input required type="text" name="seriesid" [(ngModel)]="newComic.seriesid" #seriesid="ngModel" placeholder="Type Series Id" class="form-control">
-        <input required type="text" name="seasonid" [(ngModel)]="newComic.seasonid" #seasonid="ngModel" placeholder="Type Season Id" class="form-control">
-        <input required type="text" name="name" [(ngModel)]="newComic.name" #name="ngModel" placeholder="Type Comic Name" class="form-control">
-        <input required type="text" name="description" [(ngModel)]="newComic.description" #description="ngModel"  placeholder="Type Comic Description" class="form-control">
-        <input required type="text" name="image" [(ngModel)]="newComic.image" #image="ngModel"  placeholder="Type Image Url" class="form-control">
-      </div>
-      <button type="submit" [routerLink]="['/admin']" class="btn btn-success">Add Comic</button>
-    </form>
+  <div class="col-sm-4">
   </div>
-</div>
-<div class="col-sm-4">
-</div>
+  <div class="col-sm-4">
+    <div *ngIf="flag3">
+      <form (ngSubmit)="addComic()">
+        <div class="form-group">
+          <input required type="text" name="seriesid" [(ngModel)]="newComic.seriesid" #seriesid="ngModel" placeholder="Type Series Id"
+            class="form-control">
+          <input required type="text" name="seasonid" [(ngModel)]="newComic.seasonid" #seasonid="ngModel" placeholder="Type Season Id"
+            class="form-control">
+          <input required type="text" name="name" [(ngModel)]="newComic.name" #name="ngModel" placeholder="Type Comic Name" class="form-control">
+          <input required type="text" name="description" [(ngModel)]="newComic.description" #description="ngModel" placeholder="Type Comic Description"
+            class="form-control">
+          <input required type="text" name="image" [(ngModel)]="newComic.image" #image="ngModel" placeholder="Type Image Url" class="form-control">
+        </div>
+        <button type="submit" [routerLink]="['/admin']" class="btn btn-success">Add Comic</button>
+      </form>
+    </div>
+  </div>
+  <div class="col-sm-4">
+  </div>
 </div>
 
 
 <div class="row">
-<div class="col-sm-4">
-</div>
-<div class="col-sm-4">
-  <div *ngIf="flag4">
-    <form  (ngSubmit)="addSeason()">
-      <div class="form-group">
-        <input required type="text" name="seriesid" [(ngModel)]="newSeason.seriesid" #seriesid="ngModel" placeholder="Type Series Id" class="form-control">
-        <input required type="text" name="name" [(ngModel)]="newSeason.name" #name="ngModel"  placeholder="Type Season Name" class="form-control">
-        <input required type="text" name="description" [(ngModel)]="newSeason.description" #description="ngModel"  placeholder="Type Season description" class="form-control">
-        <input required type="date" name="startson" [(ngModel)]="newSeason.startson" #startson="ngModel"  placeholder="Type Starting date" class="form-control">
-        <input required type="date" name="endson" [(ngModel)]="newSeason.endson" #endson="ngModel"  placeholder="Type Ending date" class="form-control">
-      </div>
-      <button type="submit" [routerLink]="['/admin']" class="btn btn-success">Add Season</button>
-    </form>
+  <div class="col-sm-4">
   </div>
-</div>
-<div class="col-sm-4">
-</div>
+  <div class="col-sm-4">
+    <div *ngIf="flag4">
+      <form (ngSubmit)="addSeason()">
+        <div class="form-group">
+          <input required type="text" name="seriesid" [(ngModel)]="newSeason.seriesid" #seriesid="ngModel" placeholder="Type Series Id"
+            class="form-control">
+          <input required type="text" name="name" [(ngModel)]="newSeason.name" #name="ngModel" placeholder="Type Season Name" class="form-control">
+          <input required type="text" name="description" [(ngModel)]="newSeason.description" #description="ngModel" placeholder="Type Season description"
+            class="form-control">
+          <input required type="date" name="startson" [(ngModel)]="newSeason.startson" #startson="ngModel" placeholder="Type Starting date"
+            class="form-control">
+          <input required type="date" name="endson" [(ngModel)]="newSeason.endson" #endson="ngModel" placeholder="Type Ending date"
+            class="form-control">
+        </div>
+        <button type="submit" [routerLink]="['/admin']" class="btn btn-success">Add Season</button>
+      </form>
+    </div>
+  </div>
+  <div class="col-sm-4">
+  </div>
 </div>
 
 
 <div class="row">
-<div class="col-sm-4">
-</div>
-<div class="col-sm-4">
-  <div *ngIf="flag5">
-    <form  (ngSubmit)="addSeries()">
-      <div class="form-group">
-        <input required type="text" name="name" [(ngModel)]="newSeries.name" #name="ngModel"  placeholder="Type Series Name" class="form-control">
-        <input required type="text" name="description" [(ngModel)]="newSeries.description" #description="ngModel"  placeholder="Type Series description" class="form-control">
-        <input required type="text" name="createdby" [(ngModel)]="newSeries.createdby" #createdby="ngModel" placeholder="Type Creator's name" class="form-control">
-      </div>
-      <button type="submit" [routerLink]="['/admin']" class="btn btn-success">Add Series</button>
-    </form>
+  <div class="col-sm-4">
   </div>
-</div>
-<div class="col-sm-4">
-</div>
+  <div class="col-sm-4">
+    <div *ngIf="flag5">
+      <form (ngSubmit)="addSeries()">
+        <div class="form-group">
+          <input required type="text" name="name" [(ngModel)]="newSeries.name" #name="ngModel" placeholder="Type Series Name" class="form-control">
+          <input required type="text" name="description" [(ngModel)]="newSeries.description" #description="ngModel" placeholder="Type Series description"
+            class="form-control">
+          <input required type="text" name="createdby" [(ngModel)]="newSeries.createdby" #createdby="ngModel" placeholder="Type Creator's name"
+            class="form-control">
+        </div>
+        <button type="submit" [routerLink]="['/admin']" class="btn btn-success">Add Series</button>
+      </form>
+    </div>
+  </div>
+  <div class="col-sm-4">
+  </div>
 </div>
 
 
@@ -156,121 +166,125 @@
 <br>
 
 <div class="row">
-<div class="col-sm-1">
-</div>
-<div class="col-sm-10">
-  <div *ngIf="comic">
-  <table style="width:100%">
-    <tr>
-      <th>Image</th>
-      <th>Series Id</th>
-      <th>Season Id</th>
-      <th>Comic Name</th>
-      <th>Story</th>
-      <th>Created on</th>
-      <th>Last updated on</th>
-    </tr>
+  <div class="col-sm-1">
+  </div>
+  <div class="col-sm-10">
+    <div *ngIf="comic">
+      <table style="width:100%">
+        <tr>
+          <th>Image</th>
+          <th>Series Id</th>
+          <th>Season Id</th>
+          <th>Comic Name</th>
+          <th>Story</th>
+          <th>Created on</th>
+          <th>Last updated on</th>
+        </tr>
+        <br>
+        <tr *ngFor="let item of comic; let i = index">
+          <td><img style="width:200px; height:150px" src={{item.image}}></td>
+          <td>{{item.series_id}}</td>
+          <td>{{item.season_id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.story}}</td>
+          <td>{{item.createddate}}</td>
+          <td>{{item.updateddate}}</td>
+          <button (click)="saveComicId(item._id)" type="Edit" class="btn btn-info">Edit</button>
+          <button class="btn btn-info" (click)="deleteComic(item._id)">delete</button>
+        </tr>
+      </table>
+    </div>
+    <div *ngIf="flag">
+      <form (ngSubmit)="updateComic()">
+        <div class="form-group">
+          <input required type="text" name="name" [(ngModel)]="newComic.name" #name="ngModel" placeholder="New name" class="form-control">
+          <input required type="text" name="story" [(ngModel)]="newComic.story" #story="ngModel" placeholder="New story" class="form-control">
+        </div>
+        <button type="submit" [routerLink]="['/admin']" class="btn btn-success">Update</button>
+      </form>
+    </div>
     <br>
-    <tr *ngFor="let item of comic; let i = index">
-      <td><img style="width:200px; height:150px" src={{item.image}}></td>
-      <td>{{item.series_id}}</td>
-      <td>{{item.season_id}}</td>
-      <td>{{item.name}}</td>
-      <td>{{item.story}}</td>
-      <td>{{item.createddate}}</td>
-      <td>{{item.updateddate}}</td>
-      <button (click)="saveComicId(item._id)" type="Edit" class="btn btn-info">Edit</button>
-      <button class="btn btn-info" (click)="deleteComic(item._id)">delete</button>
-    </tr>
-  </table>
-  </div>
-  <div *ngIf="flag">
-    <form  (ngSubmit)="updateComic()">
-      <div class="form-group">
-        <input required type="text" name="name" [(ngModel)]="newComic.name" #name="ngModel"  placeholder="New name" class="form-control">
-        <input required type="text" name="story" [(ngModel)]="newComic.story" #story="ngModel"  placeholder="New story" class="form-control">
-      </div>
-      <button type="submit" [routerLink]="['/admin']" class="btn btn-success">Update</button>
-    </form>
-  </div>
-  <br>
 
-  <!--season-->
-  <div *ngIf="season">
-  <table style="width:100%">
-    <tr>
-      <th>Series Id</th>
-      <th>Name</th>
-      <th>description</th>
-      <th>Starts on</th>
-      <th>End on</th>
-      <th>Created on</th>
-      <th>Last Updated on</th>
-    </tr>
+    <!--season-->
+    <div *ngIf="season">
+      <table style="width:100%">
+        <tr>
+          <th>Series Id</th>
+          <th>Name</th>
+          <th>description</th>
+          <th>Starts on</th>
+          <th>End on</th>
+          <th>Created on</th>
+          <th>Last Updated on</th>
+        </tr>
+        <br>
+        <tr *ngFor="let item of season; let i = index">
+          <td>{{item.series_id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.description}}</td>
+          <td>{{item.startson}}</td>
+          <td>{{item.endson}}</td>
+          <td>{{item.createddate}}</td>
+          <td>{{item.updateddate}}</td>
+          <button (click)="saveSeasonId(item._id)" type="submit" class="btn btn-info">Edit</button>
+          <button class="btn btn-info" (click)="deleteSeason(item._id)">delete</button>
+        </tr>
+      </table>
+    </div>
+
+    <div *ngIf="flag1">
+      <form (ngSubmit)="updateSeason()">
+        <div class="form-group">
+          <input required type="text" name="name" [(ngModel)]="newSeason.name" #name="ngModel" placeholder="New name" class="form-control">
+          <input required type="text" name="description" [(ngModel)]="newSeason.description" #description="ngModel" placeholder="New description"
+            class="form-control">
+          <input required type="date" name="startson" [(ngModel)]="newSeason.startson" #startson="ngModel" placeholder="New start date"
+            class="form-control">
+          <input required type="date" name="endson" [(ngModel)]="newSeason.endson" #endson="ngModel" placeholder="New end date" class="form-control">
+          <button type="submit" [routerLink]="['/admin']" class="btn btn-success">Update Season</button>
+        </div>
+      </form>
+
+    </div>
+
     <br>
-    <tr *ngFor="let item of season; let i = index">
-      <td>{{item.series_id}}</td>
-      <td>{{item.name}}</td>
-      <td>{{item.description}}</td>
-      <td>{{item.startson}}</td>
-      <td>{{item.endson}}</td>
-      <td>{{item.createddate}}</td>
-      <td>{{item.updateddate}}</td>
-      <button (click)="saveSeasonId(item._id)" type="submit" class="btn btn-info">Edit</button>
-      <button class="btn btn-info" (click)="deleteSeason(item._id)">delete</button>
-    </tr>
-  </table>
-  </div>
+    <div *ngIf="series">
+      <table style="width:100%">
+        <tr>
+          <th>Name</th>
+          <th>description</th>
+          <th>Created By</th>
+          <th>Created on</th>
+          <th>Last update date</th>
+          <th>Subscribed Users</th>
+        </tr>
+        <br>
+        <tr *ngFor="let item of series; let i = index">
+          <td>{{item.name}}</td>
+          <td>{{item.description}}</td>
+          <td>{{item.createdby}}</td>
+          <td>{{item.createddate}}</td>
+          <td>{{item.updatedate}}</td>
+          <th>{{item.subscribedusers}}</th>
+          <button (click)="saveSeriesId(item._id)" type="submit" class="btn btn-info">Edit</button>
+          <button class="btn btn-info" (click)="deleteSeries(item._id)">delete</button>
+        </tr>
+      </table>
+    </div>
 
-  <div *ngIf="flag1">
-    <form (ngSubmit)="updateSeason()">
-      <div class="form-group">
-        <input required type="text" name="name" [(ngModel)]="newSeason.name" #name="ngModel"  placeholder="New name" class="form-control">
-        <input required type="text" name="description" [(ngModel)]="newSeason.description" #description="ngModel"  placeholder="New description" class="form-control">
-        <input required type="date" name="startson" [(ngModel)]="newSeason.startson" #startson="ngModel"  placeholder="New start date" class="form-control">
-        <input required type="date" name="endson" [(ngModel)]="newSeason.endson" #endson="ngModel"  placeholder="New end date" class="form-control">
-      <button type="submit" [routerLink]="['/admin']" class="btn btn-success">Update Season</button>
-  </div>
-    </form>
+    <div *ngIf="flag2">
+      <form (ngSubmit)="updateSeries()">
+        <div class="form-group">
+          <input required type="text" name="name" [(ngModel)]="newSeason.name" #name="ngModel" placeholder="New name" class="form-control">
+          <input required type="text" name="description" [(ngModel)]="newSeason.description" #description="ngModel" placeholder="New description"
+            class="form-control">
+          <input required type="text" name="createdby" [(ngModel)]="newSeason.createdby" #createdby="ngModel" placeholder="New createdby"
+            class="form-control">
+          <button type="submit" [routerLink]="['/admin']" class="btn btn-success">Update Series</button>
+        </div>
+      </form>
 
+    </div>
+    <div class="col-sm-1">
+    </div>
   </div>
-
-  <br>
-  <div *ngIf="series">
-  <table style="width:100%">
-    <tr>
-      <th>Name</th>
-      <th>description</th>
-      <th>Created By</th>
-      <th>Created on</th>
-      <th>Last update date</th>
-      <th>Subscribed Users</th>
-    </tr>
-    <br>
-    <tr *ngFor="let item of series; let i = index">
-      <td>{{item.name}}</td>
-      <td>{{item.description}}</td>
-      <td>{{item.createdby}}</td>
-      <td>{{item.createddate}}</td>
-      <td>{{item.updatedate}}</td>
-      <th>{{item.subscribedusers}}</th>
-      <button (click)="saveSeriesId(item._id)" type="submit" class="btn btn-info">Edit</button>
-      <button class="btn btn-info" (click)="deleteSeries(item._id)">delete</button>
-    </tr>
-  </table>
-  </div>
-
-  <div *ngIf="flag2">
-    <form (ngSubmit)="updateSeries()">
-      <div class="form-group">
-        <input required type="text" name="name" [(ngModel)]="newSeason.name" #name="ngModel"  placeholder="New name" class="form-control">
-        <input required type="text" name="description" [(ngModel)]="newSeason.description" #description="ngModel"  placeholder="New description" class="form-control">
-        <input required type="text" name="createdby" [(ngModel)]="newSeason.createdby" #createdby="ngModel"  placeholder="New createdby" class="form-control">
-        <button type="submit" [routerLink]="['/admin']" class="btn btn-success">Update Series</button>
-  </div>
-    </form>
-
-</div>
-<div class="col-sm-1">
-</div>
-</div>

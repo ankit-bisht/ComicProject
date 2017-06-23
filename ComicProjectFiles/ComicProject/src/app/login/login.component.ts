@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   send;
   valid2;
 
-  constructor(public auth: AuthService,public router1:Router) {
+  constructor(public auth: AuthService, public router1: Router) {
 
   }
 
@@ -22,21 +22,21 @@ export class LoginComponent implements OnInit {
   }
   check(form1) {
     this.auth.Postlogin(form1.value).subscribe(res => {
-      this.valid =res.respData.data;
+      this.valid = res.respData.data;
       this.valid2 = this.valid.usertype;
-      localStorage.setItem('username',res.respData.data.username);
-      localStorage.setItem('usertype',res.respData.data.usertype);
-        if (this.valid2 == "1") {
-          this.router1.navigate(['/super-admin']);
+      localStorage.setItem('username', res.respData.data.username);
+      localStorage.setItem('usertype', res.respData.data.usertype);
+      if (this.valid2 == "1") {
+        this.router1.navigate(['/super-admin']);
 
-        }
-        else if (this.valid2 == "2") {
-          this.router1.navigate(['/admin']);
+      }
+      else if (this.valid2 == "2") {
+        this.router1.navigate(['/admin']);
 
-        }
-        else if (this.valid2 == "3") {
-          this.router1.navigate(['/user']);
-        }
+      }
+      else if (this.valid2 == "3") {
+        this.router1.navigate(['/user']);
+      }
 
       else {
         alert("Username or Password is Incorrect! or User not verified!");

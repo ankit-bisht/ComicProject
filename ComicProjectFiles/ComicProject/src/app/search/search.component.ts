@@ -8,50 +8,50 @@ import { ConnectService } from '../connect.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-GetSearchComic;
-GetSearchSeries;
-GetSearchSeason;
-searchitem1;
+  GetSearchComic;
+  GetSearchSeries;
+  GetSearchSeason;
+  searchitem1;
   constructor(public search: ConnectService, public router: Router) {
   }
   ngOnInit() {
   }
-SearchComic(){
-  this.search.GetSearchComic(this.searchitem1).subscribe(res => {
+  SearchComic() {
+    this.search.GetSearchComic(this.searchitem1).subscribe(res => {
       this.GetSearchComic = res.respData.data[0];
-      if(this.GetSearchComic){
+      if (this.GetSearchComic) {
       }
-      else{
+      else {
 
         if (confirm("Do you want to request this comic?") == true) {
-             this.router.navigate(["/user"])
+          this.router.navigate(["/user"])
         } else {
-                 this.router.navigate(["/search"])
-              }
+          this.router.navigate(["/search"])
+        }
 
       }
     })
-}
+  }
 
-SearchSeries(){
-  this.search.GetSearchSeries(this.searchitem1).subscribe(res => {
+  SearchSeries() {
+    this.search.GetSearchSeries(this.searchitem1).subscribe(res => {
       this.GetSearchSeries = res.respData.data[0];
-      if(this.GetSearchSeries){
+      if (this.GetSearchSeries) {
       }
-      else{
+      else {
         alert('Cannot find! Try something else.');
       }
     })
-}
+  }
 
-SearchSeason(){
-  this.search.GetSearchSeason(this.searchitem1).subscribe(res => {
+  SearchSeason() {
+    this.search.GetSearchSeason(this.searchitem1).subscribe(res => {
       this.GetSearchSeason = res.respData.data[0];
-      if(this.GetSearchSeason){
+      if (this.GetSearchSeason) {
       }
-      else{
+      else {
         alert('Cannot find! Try something else.');
       }
     })
-}
+  }
 }

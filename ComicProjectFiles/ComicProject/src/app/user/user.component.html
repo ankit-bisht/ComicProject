@@ -1,30 +1,30 @@
 <br>
 <div class="row">
   <div class="col-sm-1">
-    </div>
-<div class="col-sm-11">
-  <button class="btn btn-info" (click)="comicRequest()">
+  </div>
+  <div class="col-sm-11">
+    <button class="btn btn-info" (click)="comicRequest()">
     Request Comic
   </button>
-</div>
+  </div>
 </div>
 <br>
 <div class="container">
   <div class="row">
-      <div class="col-sm-10">
-          <button class="btn btn-info" (click)="getComic()">
+    <div class="col-sm-10">
+      <button class="btn btn-info" (click)="getComic()">
             Get All Comics
           </button>
-          <button class="btn btn-info" (click)="getSeason()">
+      <button class="btn btn-info" (click)="getSeason()">
             Get All Seasons
           </button>
-          <button class="btn btn-info" (click)="getSeries()">
+      <button class="btn btn-info" (click)="getSeries()">
             Get All Series
           </button>
       <hr>
-      </div>
+    </div>
     <div class="col-sm-1">
-      <button style="margin-left:40px; margin-bottom:40px"class="btn btn-success" (click)="logout()">LOGOUT</button>
+      <button style="margin-left:40px; margin-bottom:40px" class="btn btn-success" (click)="logout()">LOGOUT</button>
     </div>
     <div class="col-sm-1">
     </div>
@@ -35,9 +35,9 @@
   <div class="row">
     <div class="col-sm-3">
     </div>
-        <div class="col-sm-6">
-            <input type="text" class="form-control input-sm" placeholder="Search" [(ngModel)]="searchitem1">
-        </div>
+    <div class="col-sm-6">
+      <input type="text" class="form-control input-sm" placeholder="Search" [(ngModel)]="searchitem1">
+    </div>
     <div class="col-sm-3">
     </div>
   </div>
@@ -48,7 +48,7 @@
     <div class="col-sm-3">
     </div>
     <div class="col-sm-6" style="margin-left:85px">
-<span>
+      <span>
 <button class="btn btn-info" (click)="SearchComic()">
   Search Comic
 </button>
@@ -66,157 +66,155 @@
   <br>
 </div>
 <div class="row">
-<div class="col-sm-1">
-</div>
-<div class="col-sm-10">
-<div *ngIf="season">
-<table style="width:100%">
-  <tr>
-    <th>Name</th>
-    <th>description</th>
-    <th>Starts on</th>
-    <th>End on</th>
-  </tr>
-  <br>
-  <tr *ngFor="let item of season; let i = index">
-    <td>{{item.name}}</td>
-    <td>{{item.description}}</td>
-    <td>{{item.startson}}</td>
-    <td>{{item.endson}}</td>
-    <button class="btn btn-info" (click)="subscribe(item._id)">subscribe</button>
-    <br>
-  </tr>
-</table>
-</div>
+  <div class="col-sm-1">
+  </div>
+  <div class="col-sm-10">
+    <div *ngIf="season">
+      <table style="width:100%">
+        <tr>
+          <th>Name</th>
+          <th>description</th>
+          <th>Starts on</th>
+          <th>End on</th>
+        </tr>
+        <br>
+        <tr *ngFor="let item of season; let i = index">
+          <td>{{item.name}}</td>
+          <td>{{item.description}}</td>
+          <td>{{item.startson}}</td>
+          <td>{{item.endson}}</td>
+          <br>
+        </tr>
+      </table>
+    </div>
 
-<div *ngIf="series">
-<table style="width:100%">
-  <tr>
-    <th>Name</th>
-    <th>description</th>
-    <th>Created By</th>
-  </tr>
-  <br>
-  <tr *ngFor="let item of series; let i = index">
-    <td>{{item.name}}</td>
-    <td>{{item.description}}</td>
-    <td>{{item.createdby}}</td>
-    <button class="btn btn-info" (click)="subscribe(item._id)">subscribe</button>
-    <br>
-  </tr>
-</table>
-</div>
+    <div *ngIf="series">
+      <table style="width:100%">
+        <tr>
+          <th>Name</th>
+          <th>description</th>
+          <th>Created By</th>
+        </tr>
+        <br>
+        <tr *ngFor="let item of series; let i = index">
+          <td>{{item.name}}</td>
+          <td>{{item.description}}</td>
+          <td>{{item.createdby}}</td>
+          <button class="btn btn-info" (click)="subscribe(item._id)">subscribe</button>
+          <br>
+        </tr>
+      </table>
+    </div>
 
 
-<div *ngIf="comic">
-<table style="width:100%">
-  <tr>
-    <th>Image</th>
-    <th>Comic Name</th>
-    <th>Story</th>
-  </tr>
-  <br>
-  <tr *ngFor="let item of comic; let i = index">
-    <td><img style="width:200px; height:150px" src={{item.image}}></td>
-    <td>{{item.name}}</td>
-    <td>{{item.story}}</td>
-    <button (click)="getComment(item._id)" class="btn btn-info">Show Comments</button>
-    <input type="text" class="form-control input-sm" placeholder="Comment" [(ngModel)]="comm">
-    <button class="btn btn-info"  (click)="comment(item._id)">
+    <div *ngIf="comic">
+      <table style="width:100%">
+        <tr>
+          <th>Image</th>
+          <th>Comic Name</th>
+          <th>Story</th>
+        </tr>
+        <br>
+        <tr *ngFor="let item of comic; let i = index">
+          <td><img style="width:200px; height:150px" src={{item.image}}></td>
+          <td>{{item.name}}</td>
+          <td>{{item.story}}</td>
+          <button (click)="getComment(item._id)" class="btn btn-info">Show Comments</button>
+          <input type="text" class="form-control input-sm" placeholder="Comment" [(ngModel)]="comm">
+          <button class="btn btn-info" (click)="comment(item._id)">
         Comment
   </button>
 
-  <div *ngIf="flag">
-  <tr>
-    <td>username</td>
-    <td>comment</td>
-  </tr>
-  <tr *ngFor="let item of allComments; let i = index">
-    <td>{{item.username}}</td>
-    <td>{{item.comment}}</td>
-  </tr>
-  <br>
-  </div>
-  </tr>
+          <div *ngIf="flag">
+            <tr>
+              <td>username</td>
+              <td>comment</td>
+            </tr>
+            <tr *ngFor="let item of allComments; let i = index">
+              <td>{{item.username}}</td>
+              <td>{{item.comment}}</td>
+            </tr>
+            <br>
+          </div>
+        </tr>
 
-</table>
-</div>
+      </table>
+    </div>
 
-<div *ngIf="GetSearchSeason">
-<table style="width:100%">
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Starts on</th>
-    <th>Ends on</th>
-    <th>Created Date</th>
-  </tr>
-  <tr>
-    <td>{{GetSearchSeason.name}}</td>
-    <td>{{GetSearchSeason.description}}</td>
-    <td>{{GetSearchSeason.startson}}</td>
-    <td>{{GetSearchSeason.endson}}</td>
-    <td>{{GetSearchSeason.createddate}}</td>
-    <button class="btn btn-info" (click)="subscribe(item.series_id)">subscribe</button>
-    <br>
-  </tr>
-</table>
-</div>
+    <div *ngIf="GetSearchSeason">
+      <table style="width:100%">
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Starts on</th>
+          <th>Ends on</th>
+          <th>Created Date</th>
+        </tr>
+        <tr>
+          <td>{{GetSearchSeason.name}}</td>
+          <td>{{GetSearchSeason.description}}</td>
+          <td>{{GetSearchSeason.startson}}</td>
+          <td>{{GetSearchSeason.endson}}</td>
+          <td>{{GetSearchSeason.createddate}}</td>
+          <br>
+        </tr>
+      </table>
+    </div>
 
-<div *ngIf="GetSearchSeries">
-<table style="width:100%">
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Created By</th>
-    <th>Created Date</th>
-  </tr>
-  <tr>
-    <td>{{GetSearchSeries.name}}</td>
-    <td>{{GetSearchSeries.description}}</td>
-    <td>{{GetSearchSeries.createdby}}</td>
-    <td>{{GetSearchSeries.createddate}}</td>
-    <button class="btn btn-info" (click)="subscribe(GetSearchSeries._id)">subscribe</button>
-    <br>
-  </tr>
-</table>
-</div>
+    <div *ngIf="GetSearchSeries">
+      <table style="width:100%">
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Created By</th>
+          <th>Created Date</th>
+        </tr>
+        <tr>
+          <td>{{GetSearchSeries.name}}</td>
+          <td>{{GetSearchSeries.description}}</td>
+          <td>{{GetSearchSeries.createdby}}</td>
+          <td>{{GetSearchSeries.createddate}}</td>
+          <button class="btn btn-info" (click)="subscribe(GetSearchSeries._id)">subscribe</button>
+          <br>
+        </tr>
+      </table>
+    </div>
 
-<div *ngIf="GetSearchComic">
-<table style="width:100%">
-  <tr>
-    <th>Name</th>
-    <th>Created Date</th>
-    <th>Image</th>
-  </tr>
-  <br>
-  <tr>
-    <td>{{GetSearchComic.name}}</td>
-    <td>{{GetSearchComic.createddate}}</td>
-    <td><img src={{GetSearchComic.image}} height="175px" width="175px"></td>
+    <div *ngIf="GetSearchComic">
+      <table style="width:100%">
+        <tr>
+          <th>Name</th>
+          <th>Created Date</th>
+          <th>Image</th>
+        </tr>
+        <br>
+        <tr>
+          <td>{{GetSearchComic.name}}</td>
+          <td>{{GetSearchComic.createddate}}</td>
+          <td><img src={{GetSearchComic.image}} height="175px" width="175px"></td>
 
-    <button (click)="getComment(GetSearchComic._id)" class="btn btn-info">Show Comments</button>
-    <input type="text" class="form-control input-sm" placeholder="Comment" [(ngModel)]="comm">
-    <button class="btn btn-info"  (click)="comment(GetSearchComic._id)">
+          <button (click)="getComment(GetSearchComic._id)" class="btn btn-info">Show Comments</button>
+          <input type="text" class="form-control input-sm" placeholder="Comment" [(ngModel)]="comm">
+          <button class="btn btn-info" (click)="comment(GetSearchComic._id)">
         Comment
   </button>
-  </tr>
-  <div *ngIf="flag">
-  <tr>
-    <td>username</td>
-    <td>comment</td>
-  </tr>
-  <tr *ngFor="let item of allComments; let i = index">
-    <td>{{item.username}}</td>
-    <td>{{item.comment}}</td>
-    <br>
-  </tr>
+        </tr>
+        <div *ngIf="flag">
+          <tr>
+            <td>username</td>
+            <td>comment</td>
+          </tr>
+          <tr *ngFor="let item of allComments; let i = index">
+            <td>{{item.username}}</td>
+            <td>{{item.comment}}</td>
+            <br>
+          </tr>
+        </div>
+      </table>
+    </div>
   </div>
-</table>
-</div>
-</div>
-<div class="col-sm-1">
-</div>
+  <div class="col-sm-1">
+  </div>
 </div>
 
 
@@ -224,9 +222,10 @@
 
 
 <div *ngIf="request">
-  <form  (ngSubmit)="addRequest()">
+  <form (ngSubmit)="addRequest()">
     <div class="form-group">
-      <input required type="text" name="comicName" [(ngModel)]="comicreq.comicname" #comicName="ngModel"  placeholder="Type comicName" class="form-control">
+      <input required type="text" name="comicName" [(ngModel)]="comicreq.comicname" #comicName="ngModel" placeholder="Type comicName"
+        class="form-control">
     </div>
     <button type="submit" [routerLink]="['/user']" class="btn btn-success">Request Comic!</button>
   </form>

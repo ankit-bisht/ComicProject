@@ -10,20 +10,20 @@ import { ConnectService } from './connect.service';
 
 @Injectable()
 export class AuthService implements CanActivate {
-usertype;
-  constructor(public router1: Router, public auth: ConnectService,public httpService: Http, public UrlObject: Configuration) { }
+  usertype;
+  constructor(public router1: Router, public auth: ConnectService, public httpService: Http, public UrlObject: Configuration) { }
 
-canActivate(route: ActivatedRouteSnapshot) {
-   var x = route.data;
-   if (x[0].usertype == localStorage.getItem("usertype")) {
-     return true;
-   }
-   else {
-this.router1.navigate(['/login'])
-     return false;
+  canActivate(route: ActivatedRouteSnapshot) {
+    var x = route.data;
+    if (x[0].usertype == localStorage.getItem("usertype")) {
+      return true;
+    }
+    else {
+      this.router1.navigate(['/login'])
+      return false;
 
-   }
- }
+    }
+  }
   details: {
     username: string,
     password: string
@@ -33,11 +33,11 @@ this.router1.navigate(['/login'])
   static value;
 
 
-    Postlogin(details): Observable<any> {
+  Postlogin(details): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     return this.httpService.post(this.UrlObject.UrlObj.VerifyUserUrl, details, headers).map(
-     (res: Response) => res.json());
-    }
+      (res: Response) => res.json());
+  }
 
 }

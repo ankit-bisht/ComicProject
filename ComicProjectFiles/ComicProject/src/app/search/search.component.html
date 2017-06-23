@@ -6,83 +6,83 @@
     </div>
     <div class="col-sm-6" style="padding-left: 109px;
     margin-left: -40px;">
-    <input type="text" class="form-control input-sm" placeholder="Search" [(ngModel)]="searchitem1">
+      <input type="text" class="form-control input-sm" placeholder="Search" [(ngModel)]="searchitem1">
     </div>
     <div class="col-sm-3">
     </div>
   </div>
-  </div>
+</div>
 <br>
 <div class="container">
-<div class="row">
-  <div class="col-sm-3" >
+  <div class="row">
+    <div class="col-sm-3">
     </div>
-  <div class="col-sm-6" style="padding-left:109px">
-  <button class="btn btn-info"  (click)="SearchComic()">
+    <div class="col-sm-6" style="padding-left:109px">
+      <button class="btn btn-info" (click)="SearchComic()">
         <span class="glyphicon glyphicon-search"></span>SearchComic
   </button>
 
-    <button class="btn btn-info" (click)="SearchSeries()">
+      <button class="btn btn-info" (click)="SearchSeries()">
         <span class="glyphicon glyphicon-search"></span>SearchSeries
   </button>
 
-    <button class="btn btn-info" (click)="SearchSeason()">
+      <button class="btn btn-info" (click)="SearchSeason()">
         <span class="glyphicon glyphicon-search"></span>SearchSeason
   </button>
-</div>
-<div class="col-sm-3">
+    </div>
+    <div class="col-sm-3">
+    </div>
   </div>
-</div>
 </div>
 
 <div *ngIf="GetSearchComic">
-<table style="width:100%">
-  <tr>
-    <th>Name</th>
-    <th>Created Date</th>
-    <th>Image</th>
-  </tr>
-  <br>
-  <tr>
-    <td>{{GetSearchComic.name}}</td>
-    <td>{{GetSearchComic.createddate}}</td>
-    <td><img src={{GetSearchComic.image}} height="175px" width="175px"></td>
-  </tr>
-</table>
+  <table style="width:100%">
+    <tr>
+      <th>Name</th>
+      <th>Created Date</th>
+      <th>Image</th>
+    </tr>
+    <br>
+    <tr>
+      <td>{{GetSearchComic.name}}</td>
+      <td>{{GetSearchComic.createddate}}</td>
+      <td><img src={{GetSearchComic.image}} height="175px" width="175px"></td>
+    </tr>
+  </table>
 </div>
 
 <div *ngIf="GetSearchSeason">
-<table style="width:100%">
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Starts on</th>
-    <th>Ends on</th>
-    <th>Created Date</th>
-  </tr>
-  <tr>
-    <td>{{GetSearchSeason.name}}</td>
-    <td>{{GetSearchSeason.description}}</td>
-    <td>{{GetSearchSeason.startson}}</td>
-    <td>{{GetSearchSeason.endson}}</td>
-    <td>{{GetSearchSeason.createddate}}</td>
-  </tr>
-</table>
+  <table style="width:100%">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Starts on</th>
+      <th>Ends on</th>
+      <th>Created Date</th>
+    </tr>
+    <tr>
+      <td>{{GetSearchSeason.name}}</td>
+      <td>{{GetSearchSeason.description}}</td>
+      <td>{{GetSearchSeason.startson}}</td>
+      <td>{{GetSearchSeason.endson}}</td>
+      <td>{{GetSearchSeason.createddate}}</td>
+    </tr>
+  </table>
 </div>
 
 <div *ngIf="GetSearchSeries">
-<table style="width:100%">
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Created By</th>
-    <th>Created Date</th>
-  </tr>
-  <tr>
-    <td>{{GetSearchSeries.name}}</td>
-    <td>{{GetSearchSeries.description}}</td>
-    <td>{{GetSearchSeries.createdby}}</td>
-    <td>{{GetSearchSeries.createddate}}</td>
-  </tr>
-</table>
+  <table style="width:100%">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Created By</th>
+      <th>Created Date</th>
+    </tr>
+    <tr>
+      <td>{{GetSearchSeries.name}}</td>
+      <td>{{GetSearchSeries.description}}</td>
+      <td>{{GetSearchSeries.createdby}}</td>
+      <td>{{GetSearchSeries.createddate}}</td>
+    </tr>
+  </table>
 </div>

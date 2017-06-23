@@ -1,56 +1,59 @@
 <div class="row">
-<div class="col-sm-1">
-</div>
-<div class="col-sm-4">
-<h1> Welcome Super Admin! </h1>
-</div>
-<div class="col-sm-5">
-</div>
-<div class="col-sm-2">
-<button class="btn btn-success" style="margin-top:20px;margin-left:80px" (click)="logout()">LOGOUT</button>
-</div>
+  <div class="col-sm-1">
+  </div>
+  <div class="col-sm-4">
+    <h1> Welcome Super Admin! </h1>
+  </div>
+  <div class="col-sm-5">
+  </div>
+  <div class="col-sm-2">
+    <button class="btn btn-success" style="margin-top:20px;margin-left:80px" (click)="logout()">LOGOUT</button>
+  </div>
 </div>
 <div class="row">
-<div class="col-sm-1">
-</div>
-<div class="col-sm-1">
-<button class="btn btn-info" (click)="GetUser()">
+  <div class="col-sm-1">
+  </div>
+  <div class="col-sm-1">
+    <button class="btn btn-info" (click)="GetUser()">
 Get All Users
 </button>
-</div>
-<div class="col-sm-1">
-<button class="btn btn-info" (click)="add()">
+  </div>
+  <div class="col-sm-1">
+    <button class="btn btn-info" (click)="add()">
 Add a new User
 </button>
-</div>
-<div class="col-sm-9">
-</div>
+  </div>
+  <div class="col-sm-9">
+  </div>
 </div>
 <br>
-<div class ="row">
+<div class="row">
   <div class="col-sm-4">
   </div>
-    <div class="col-sm-4">
-<div *ngIf="flag1">
-  <form  (ngSubmit)="addUser(dropdown.value)">
-    <div class="form-group">
-      <input required type="text" name="username" [(ngModel)]="Newuser.username" #username="ngModel" placeholder="Type Username" class="form-control">
-      <input required type="text" name="name" [(ngModel)]="Newuser.name" #name="ngModel"  placeholder="Type Name" class="form-control">
+  <div class="col-sm-4">
+    <div *ngIf="flag1">
+      <form (ngSubmit)="addUser(dropdown.value)">
+        <div class="form-group">
+          <input required type="text" name="username" [(ngModel)]="Newuser.username" #username="ngModel" placeholder="Type Username"
+            class="form-control">
+          <input required type="text" name="name" [(ngModel)]="Newuser.name" #name="ngModel" placeholder="Type Name" class="form-control">
 
-      <input required type="password" name="password" [(ngModel)]="Newuser.password" #password="ngModel"  placeholder="Type password" class="form-control">
-      <input required type="email" name="email" [(ngModel)]="Newuser.email" #email="ngModel"  placeholder="Type Email" class="form-control">
-      <input required type="number" name="phoneNumber" [(ngModel)]="Newuser.phoneNumber" #phoneNumber="ngModel"  placeholder="Type Phone Number" class="form-control">
-    </div>
-         <select #dropdown>
+          <input required type="password" name="password" [(ngModel)]="Newuser.password" #password="ngModel" placeholder="Type password"
+            class="form-control">
+          <input required type="email" name="email" [(ngModel)]="Newuser.email" #email="ngModel" placeholder="Type Email" class="form-control">
+          <input required type="number" name="phoneNumber" [(ngModel)]="Newuser.phoneNumber" #phoneNumber="ngModel" placeholder="Type Phone Number"
+            class="form-control">
+        </div>
+        <select #dropdown>
   <option  value="2" name="usertype" ngDefaultControl>Admin</option>
   <option  value="3" name="usertype" ngDefaultControl>User</option>
 </select>
 
-    <button type="submit" [routerLink]="['/super-admin']" class="btn btn-success">Add user</button>
+        <button type="submit" [routerLink]="['/super-admin']" class="btn btn-success">Add user</button>
 
-  </form>
-</div>
-</div>
+      </form>
+    </div>
+  </div>
 </div>
 <br>
 <br>
@@ -58,52 +61,60 @@ Add a new User
 </div>
 <div class="col-sm-10">
   <div *ngIf="user">
-  <table style="width:100%">
-    <tr>
-      <th>User Name</th>
-      <th>Password</th>
-      <th>Name</th>
-      <th>User Type</th>
-      <th>Phone Number</th>
-      <th>Email</th>
-      <th>Verification status </th>
-      <th>Verification code</th>
-      <th>Last Update Date</th>
-    </tr>
-    <br>
-    <tr *ngFor="let item of user; let i = index">
-      <td>{{item.username}}</td>
-      <td>{{item.password}}</td>
-      <td>{{item.name}}</td>
-      <td>{{item.usertype}}</td>
-      <td>{{item.number}}</td>
-      <td>{{item.email}}</td>
-      <td>{{item.verification}}</td>
-      <td>{{item.code}}</td>
-      <td>{{item.updateddate}}</td>
+    <table style="width:100%">
+      <tr>
+        <th>User Name</th>
+        <th>Password</th>
+        <th>Name</th>
+        <th>User Type</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Verification status </th>
+        <th>Verification code</th>
+        <th>Last Update Date</th>
+      </tr>
       <br>
-      <button (click)="save(item._id)" type="submit" class="btn btn-info">Edit</button>
-      <button class="btn btn-info" (click)="DeleteUser(item.username)">delete</button>
-    </tr>
-  </table>
+      <tr *ngFor="let item of user; let i = index">
+        <td>{{item.username}}</td>
+        <td>{{item.password}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.usertype}}</td>
+        <td>{{item.number}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.verification}}</td>
+        <td>{{item.code}}</td>
+        <td>{{item.updateddate}}</td>
+        <br>
+        <button (click)="save(item._id)" type="submit" class="btn btn-info">Edit</button>
+        <button class="btn btn-info" (click)="DeleteUser(item.username)">delete</button>
+      </tr>
+    </table>
 
-  <div *ngIf="flag">
-    <form  (ngSubmit)="updateuser(dropdown.value)">
-      <div class="form-group">
-        <input required type="text" name="name" [(ngModel)]="Newuser.name" #name="ngModel"  placeholder="New name" class="form-control">
-        <input required type="password" name="password" [(ngModel)]="Newuser.password" #password="ngModel"  placeholder="New password" class="form-control">
-        <input required type="email" name="email" [(ngModel)]="Newuser.email" #email="ngModel"  placeholder="New email" class="form-control">
-        <input required type="number" name="phoneNumber" [(ngModel)]="Newuser.phoneNumber" #phoneNumber="ngModel"  placeholder="New phoneNumber" class="form-control">
-        <input required type="number" name="verification" [(ngModel)]="Newuser.verification" #verification="ngModel"  placeholder="New verification status 0 or 1" class="form-control">
-      </div>
-           <select #dropdown>
+    <div *ngIf="user">
+      <table>
+        <tr>
+          <th>username</th>
+        </tr>
+        <tr *ngFor="let item of user; let " <div *ngIf="flag">
+          <form (ngSubmit)="updateuser(dropdown.value)">
+            <div class="form-group">
+              <input required type="text" name="name" [(ngModel)]="Newuser.name" #name="ngModel" placeholder="New name" class="form-control">
+              <input required type="password" name="password" [(ngModel)]="Newuser.password" #password="ngModel" placeholder="New password"
+                class="form-control">
+              <input required type="email" name="email" [(ngModel)]="Newuser.email" #email="ngModel" placeholder="New email" class="form-control">
+              <input required type="number" name="phoneNumber" [(ngModel)]="Newuser.phoneNumber" #phoneNumber="ngModel" placeholder="New phoneNumber"
+                class="form-control">
+              <input required type="number" name="verification" [(ngModel)]="Newuser.verification" #verification="ngModel" placeholder="New verification status 0 or 1"
+                class="form-control">
+            </div>
+            <select #dropdown>
     <option  value="2" name="usertype" ngDefaultControl>Admin</option>
     <option  value="3" name="usertype" ngDefaultControl>User</option>
   </select>
-      <button type="submit" [routerLink]="['/super-admin']" class="btn btn-success">Update</button>
-    </form>
-  </div>
+            <button type="submit" [routerLink]="['/super-admin']" class="btn btn-success">Update</button>
+          </form>
+    </div>
 
-</div>
-<div class="col-sm-1">
-</div>
+  </div>
+  <div class="col-sm-1">
+  </div>

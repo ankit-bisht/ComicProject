@@ -8,27 +8,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./verify.component.css']
 })
 export class VerifyComponent implements OnInit {
-verifyitem;
-VerifyCode;
-  constructor(public search: ConnectService, public router: Router ) { }
+  verifyitem;
+  VerifyCode;
+  constructor(public search: ConnectService, public router: Router) { }
 
   ngOnInit() {
   }
-verification(){
-  this.search.VerifyCode(this.verifyitem).subscribe(res => {
-      if(res.data!="wrong code"){
-        if(res.data.username){
+  verification() {
+    this.search.VerifyCode(this.verifyitem).subscribe(res => {
+      if (res.data != "wrong code") {
+        if (res.data.username) {
           alert("You already belong to the comic city!")
         }
-        else{
+        else {
           alert('Welcome to the comic city!');
           this.router.navigate(["/login"]);
         }
 
       }
-      else{
+      else {
         alert('Are you sure your code is right?');
       }
     })
-}
+  }
 }
